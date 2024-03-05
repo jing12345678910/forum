@@ -1,0 +1,14 @@
+.img-container {
+  position: relative;
+}
+img {
+  width: 60%;
+}
+.overlay-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+}
