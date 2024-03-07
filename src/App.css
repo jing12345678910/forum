@@ -13,6 +13,9 @@
   }
 }
 
+.main-container {
+  display: flex;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -34,5 +37,87 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+.header_div {
+  width: 100%;
+  height: 20vh;
+  background-color: #aaaaaa;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: static;
+}
+
+.sidebar_div {
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: #777777;
+  color: #000;
+  width: 220px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.sidebar_div ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  justify-content: center;
+}
+
+.sidebar_div li {
+  width: 90%;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #aaaaaa;
+  margin: 10px;
+}
+
+.footer_div {
+  width: 100%;
+  height: 20vh;
+  font-size: 2rem;
+  font-weight: bold;
+  border-top: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout_wrapper {
+  display: flex;
+  height: 100vh;
+}
+
+.layout_wrapper .main {
+  flex: 1;
+  height: 100vh;
+}
+
+.layout_wrapper .main .content {
+  flex: 1;
+  font-size: 2rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100% - 20vh - 20vh); /* 使用實際的 header 和 footer 高度值 */
+}
+
+.layout_wrapper.sidebar_right {
+  flex-direction: row-reverse;
+}
+
+.layout_wrapper.header_top {
+  flex-direction: column;
+
+  .layout_wrapper .main {
+    display: flex;
   }
 }

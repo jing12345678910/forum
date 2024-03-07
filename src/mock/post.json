@@ -1,0 +1,38 @@
+[
+  {
+    "post-id": 1,
+    "subject": "考試板",
+    "title": "我的考卷",
+    "post-content": [
+      { "text": "請問有人可以幫忙解答這張考卷嗎？" },
+      { "photo": "post-content-photo1" }
+    ],
+    "author": [{ "member-id": 1 }],
+    "timestamp": "2024-03-07 12:00",
+    "likes": [{ "heart": 307 }, { "sweat-face": 27 }, { "crying-face": 58 }],
+    "comments": [
+      {
+        "university": "星星大學",
+        "content": "4213 Ray likes his 「thick, bushy tail」 a lot->A tree falls and 「makes Ray’s tail flat」. He is sad. -> The sun 「explains 」how a flat tail will help Ray.-> Ray’s 「flat tail helps 」him send a signal, swim fast, and give his pals a ride.",
+        "like": 55,
+        "dislike": 0,
+        "Reply-to-message": "好強"
+      },
+      {
+        "university": "團團大學",
+        "content": "大學了還不會這題怎麼辦",
+        "like": 13,
+        "dislike": 0,
+        "Reply-to-message": "我也不會"
+      },
+      {
+        "university": "圓圓大學",
+        "content": "我小三才剛開始學ABC",
+        "like": 7,
+        "dislike": 0,
+        "Reply-to-message": "我也是"
+      }
+    ],
+    "article-discussion-video": "https://www.youtube.com/watch?v=LQU6jK6FOYs&t=754s"
+  }
+]
