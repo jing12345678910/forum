@@ -1,7 +1,7 @@
 [{
   "member-id": 1,
   "name": "安娜",
-  "avatar": "avatar1",
+  "avatar": "./imgs/avatar1.jpg",
   "personal-profile": "我是安娜，喜歡攝影、插畫和旅行。",
   "university": "多多大學",
   "account": "anna78936",
