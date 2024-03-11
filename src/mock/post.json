@@ -6,7 +6,7 @@
     "post-content": [
       { "overview": "求各位大神幫助，我的考卷好難" },
       { "text": "請問有人可以幫忙解答這張考卷嗎？" },
-      { "photo": "./imgs/post-content-photo1.jpg" }
+      { "photo": "../imgs/animation_photo.jpg" }
     ],
     "author":1,
     "timestamp": "2024-03-07 12:00",
