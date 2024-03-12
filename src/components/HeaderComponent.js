@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { AudioOutlined } from "@ant-design/icons";
 import { Layout, theme, Input, Space, Button, Flex } from "antd";
 import logo from "../imgs/logo.jpg";
+import { Outlet, Link } from "react-router-dom";
 
 import "../styles/App.css";
 
@@ -33,7 +34,10 @@ const HeaderComponent = ({ onSignUpSignInButtonClick }) => {
       >
         <div className="header_container">
           <div className="header_left">
-            <img src={logo} alt="logo" />
+            <Link to="/">
+              <img src={logo} alt="logo" />
+            </Link>
+
             <Space direction="vertical">
               <Search
                 placeholder="搜什麼主題?"
@@ -58,6 +62,7 @@ const HeaderComponent = ({ onSignUpSignInButtonClick }) => {
           </div>
         </div>
       </Header>
+      <Outlet/>
     </Layout>
   );
 };
