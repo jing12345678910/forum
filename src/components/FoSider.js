@@ -17,7 +17,7 @@ const categories = [
   { key: "3", icon: <RiseOutlined />, label: "股票版" },
 ];
 
-const SiderComponent = () => {
+const FoSider = () => {
   return (
     <Layout>
       <Sider
@@ -45,8 +45,7 @@ const SiderComponent = () => {
           items={categories}
         />
       </Sider>
-      
     </Layout>
   );
 };
-export default SiderComponent;
+export default FoSider;

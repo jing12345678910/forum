@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   MinusOutlined,
   PlusOutlined,
@@ -17,7 +18,7 @@ import {
 } from "antd";
 
 import "../styles/SignUpSignIn.css";
-import { Navigate } from "react-router-dom";
+
 const { Content } = Layout;
 const onFinish = (values) => {
   console.log("Received values of form: ", values);
@@ -30,7 +31,12 @@ const onFinishFailed = (errorInfo) => {
 //     Navigate("/dashboard");
 //   }
 // }, [token]);
-const SignUpSignIn = () => {
+const Login = () => {
+  const navigate = useNavigate();
+  const Params = useParams;
+  const { id } = Params;
+  // navigate(`./post/${id}`);
+
   const [size, setSize] = useState(160);
   const increase = () => {
     setSize((prevSize) => {
@@ -41,6 +47,7 @@ const SignUpSignIn = () => {
       return newSize;
     });
   };
+
   const decline = () => {
     setSize((prevSize) => {
       const newSize = prevSize - 10;
@@ -177,4 +184,4 @@ const SignUpSignIn = () => {
     </Layout>
   );
 };
-export default SignUpSignIn;
+export default Login;

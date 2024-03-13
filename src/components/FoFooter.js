@@ -6,7 +6,7 @@ import "../styles/App.css";
 
 const { Footer } = Layout;
 
-const FooterComponent = () => {
+const FoFooter = () => {
   return (
     <Footer
       style={{
@@ -23,4 +23,4 @@ const FooterComponent = () => {
     </Footer>
   );
 };
-export default FooterComponent;
+export default FoFooter;

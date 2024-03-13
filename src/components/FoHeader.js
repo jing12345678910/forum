@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AudioOutlined } from "@ant-design/icons";
 import { Layout, theme, Input, Space, Button, Flex } from "antd";
 import logo from "../imgs/logo.jpg";
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link ,useNavigate} from "react-router-dom";
 
 import "../styles/App.css";
 
@@ -19,7 +19,8 @@ const suffix = (
 );
 const onSearch = (value, _e, info) => console.log(info?.source, value);
 
-const HeaderComponent = ({ onSignUpSignInButtonClick }) => {
+const FoHeader = ({  }) => {
+  const navigate=useNavigate();
   const {
     token: { colorBgContainer },
   } = theme.useToken();
@@ -51,8 +52,8 @@ const HeaderComponent = ({ onSignUpSignInButtonClick }) => {
           <div className="header_right">
             <Flex gap="small" align="flex-start" vertical>
               <Flex gap="small" wrap="wrap">
-                <Button size={size} onClick={onSignUpSignInButtonClick}>
-                  註冊/登入
+                <Button size={size} onClick={()=>navigate('/login')}>
+                  登入
                 </Button>
                 <Button type="primary" size={size}>
                   下載App
@@ -62,8 +63,8 @@ const HeaderComponent = ({ onSignUpSignInButtonClick }) => {
           </div>
         </div>
       </Header>
-      <Outlet/>
+      <Outlet />
     </Layout>
   );
 };
-export default HeaderComponent;
+export default FoHeader;

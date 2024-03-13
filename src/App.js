@@ -1,62 +1,28 @@
-import "./mock/mockServer";
-import "./styles/App.css";
-import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
-import { I18nextProvider, t } from "react-i18next";
-import { homeApi } from "./api/module/home";
-import { Layout } from "antd";
+import React from "react";
+import Home from "./pages/Home";
+import Post from "./pages/Post";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
+import Collection from "./pages/Collection";
 
-import HeaderComponent from "./components/HeaderComponent";
-import SiderComponent from "./components/SiderComponent";
-import ContentComponent from "./components/ContentComponent";
-import FooterComponent from "./components/FooterComponent";
-import SignUpSignIn from "./pages/SignUpSignIn";
-
-const { Sider } = Layout;
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
-  const [showSignUpSignIn, setSignUpSignIn] = useState(false);
-  const [member, setMember] = useState(null);
-  useEffect(() => {
-    const getMember = async () => {
-      try {
-        const data = await homeApi.getMember();
-        setMember(data);
-      } catch (error) {
-        console.error("獲取會員資料錯誤", error);
-      }
-    };
-    getMember();
-  }, []);
-
   return (
     <BrowserRouter>
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Layout>
-              <Sider>
-                <SiderComponent />
-              </Sider>
-              <Layout className="main">
-                <HeaderComponent
-                  onSignUpSignInButtonClick={() =>
-                    setSignUpSignIn(!showSignUpSignIn)
-                  }
-                />
-                {showSignUpSignIn && <SignUpSignIn />}
-                {!showSignUpSignIn && <Outlet />}
-
-                <FooterComponent />
-              </Layout>
-            </Layout>
-          }
-        >
-          <Route index element={<ContentComponent />} />
-        </Route>
+        <Route exact path="/" element={<Home />} index />
+        <Route exact path="/post/:id" element={<Post />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/signup" element={<Signup />} />
+        <Route exact path="/profile" element={<Profile />} />
+        <Route exact path="/editprofile" element={<EditProfile />} />
+        <Route exact path="/collection" element={<Collection />} />
       </Routes>
     </BrowserRouter>
   );
 };
+
 export default App;

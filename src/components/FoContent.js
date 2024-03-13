@@ -23,7 +23,7 @@ const { Content } = Layout;
 
 const memberName = member[post[0].author - 1].name;
 
-const ContentComponent = () => {
+const FoContent = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -53,7 +53,7 @@ const ContentComponent = () => {
               <div className="article_summary">
                 <p>{post[0]["post-content"][0]["overview"]}</p>
 
-                <img src={ContentPhoto} alt="contentPhoto" />
+                <img width={100} src={ContentPhoto} alt="contentPhoto" />
               </div>
               <div className="respond">
                 <Space>
@@ -84,7 +84,7 @@ const ContentComponent = () => {
                   本來在路上遇到高大的人就會特別注意到對方了
                   何況是相當有名的五條悟跟娜娜明呢？
                 </p>
-                <img src={animation_photo} alt="logo" />
+                <img width={100} src={animation_photo} alt="logo" />
               </div>
               <div className="respond">
                 <Space>
@@ -115,7 +115,7 @@ const ContentComponent = () => {
                   本來在路上遇到高大的人就會特別注意到對方了
                   何況是相當有名的五條悟跟娜娜明呢？
                 </p>
-                <img src={animation_photo} alt="logo" />
+                <img width={100} src={animation_photo} alt="logo" />
               </div>
               <div className="respond">
                 <Space>
@@ -142,4 +142,4 @@ const ContentComponent = () => {
     </Layout>
   );
 };
-export default ContentComponent;
+export default FoContent;
