@@ -1,0 +1,11 @@
+.header_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header_left {
+  margin-left: 1rem;
+}
+.header_right {
+  margin-right: 1rem;
+}

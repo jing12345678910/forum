@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { AudioOutlined } from "@ant-design/icons";
 import { Layout, theme, Input, Space, Button, Flex } from "antd";
 import logo from "../imgs/logo.jpg";
-import { Outlet, Link ,useNavigate} from "react-router-dom";
+import { Link ,useNavigate} from "react-router-dom";
 
-import "../styles/App.css";
+import "../styles/FoHeader.css";
 
 const { Header } = Layout;
 
@@ -19,7 +19,7 @@ const suffix = (
 );
 const onSearch = (value, _e, info) => console.log(info?.source, value);
 
-const FoHeader = ({  }) => {
+const FoHeader = ({ isLoginPage }) => {
   const navigate=useNavigate();
   const {
     token: { colorBgContainer },
@@ -52,9 +52,16 @@ const FoHeader = ({  }) => {
           <div className="header_right">
             <Flex gap="small" align="flex-start" vertical>
               <Flex gap="small" wrap="wrap">
-                <Button size={size} onClick={()=>navigate('/login')}>
-                  登入
-                </Button>
+                {isLoginPage ? (
+                  <Button size={size} onClick={() => navigate("/signup")}>
+                    註冊
+                  </Button>
+                ) : (
+                  <Button size={size} onClick={() => navigate("/login")}>
+                    登入
+                  </Button>
+                )}
+
                 <Button type="primary" size={size}>
                   下載App
                 </Button>
@@ -63,7 +70,6 @@ const FoHeader = ({  }) => {
           </div>
         </div>
       </Header>
-      <Outlet />
     </Layout>
   );
 };

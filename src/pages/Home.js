@@ -1,14 +1,14 @@
 import "../mock/mockServer";
-import "../styles/App.css";
+import "../styles/Home.css";
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+
 import { I18nextProvider, t } from "react-i18next";
 import { homeApi } from "../api/module/home";
 import { Layout } from "antd";
 
 import FoHeader from "../components/FoHeader";
 import FoSider from "../components/FoSider";
-import FoContent from "../components/FoContent";
+import FoHomeContent from "../components/FoHomeContent";
 import FoFooter from "../components/FoFooter";
 import Login from "./Login";
 
@@ -31,25 +31,17 @@ const Home = () => {
   }, []);
 
   return (
-    <Routes>
-      <Route
-        exact
-        path="/"
-        element={
-          <Layout>
-            <Sider>
-              <FoSider />
-            </Sider>
-            <Layout className="main">
-              <FoHeader onLoginButtonClick={() => setLogin(!showLogin)} />
-              <FoContent />
-              <FoFooter />
-            </Layout>
-          </Layout>
-        }
-      />
-      <Route exact path="/login" element={<Login />} />
-    </Routes>
+    <Layout>
+      <Sider>
+        <FoSider />
+      </Sider>
+      <Layout className="main">
+        <FoHeader onLoginButtonClick={() => setLogin(!showLogin)} />
+        <FoHomeContent />
+        <FoFooter />
+      </Layout>
+      {showLogin && <Login />}
+    </Layout>
   );
 };
 export default Home;

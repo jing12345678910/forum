@@ -1,0 +1,22 @@
+.post_content {
+  display: flex;
+}
+.board {
+  display: flex;
+}
+.board > * {
+  margin-right: 1rem;
+}
+.tags_responses {
+  display: flex;
+  justify-content: space-between;
+}
+.comment {
+  margin-left: 2rem;
+}
+.comment > * {
+  margin-right: 1rem;
+}
+.respond {
+  margin-left: 2rem;
+}

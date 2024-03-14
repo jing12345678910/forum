@@ -10,7 +10,7 @@ import { Layout, theme, Space, Divider } from "antd";
 
 import animation_photo from "../imgs/animation_photo.jpg";
 import ContentPhoto from "../imgs/animation_photo.jpg";
-import "../styles/App.css";
+import "../styles/FoContent.css";
 import post from "../mock/post.json";
 import member from "../mock/member.json";
 
