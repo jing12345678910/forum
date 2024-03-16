@@ -15,6 +15,8 @@ import {
   Checkbox,
   Form,
   Input,
+  Space,
+  message,
 } from "antd";
 
 import "../styles/Login.css";
@@ -23,24 +25,48 @@ import FoFooter from "../components/FoFooter";
 import FoHeader from "../components/FoHeader";
 
 const { Content, Sider } = Layout;
-const onFinish = (values) => {
-  console.log("Received values of form: ", values);
-};
-const onFinishFailed = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
+
 // useEffect(() => {
 //   if (token) {
 //     Navigate("/dashboard");
 //   }
 // }, [token]);
 const Login = () => {
+  const [messageApi, contextHolder] = message.useMessage();
+
   const navigate = useNavigate();
   const Params = useParams;
   const { id } = Params;
   // navigate(`./post/${id}`);
 
+  const success = () => {
+    messageApi.open({
+      type: "success",
+    });
+  };
+  const error = () => {
+    messageApi.open({
+      type: "error",
+    });
+  };
+
   const [size, setSize] = useState(160);
+  const onFinish = (values) => {
+    console.log("從表單接收的值: ", values);
+    const { username, password } = values;
+    console.log("username:", username);
+    console.log("password:", password);
+    if (username.trim() === "123" || password.trim() === "") {
+      messageApi.error("帳號和密碼不能為空");
+      // messageApi.error("This is an error message");
+    } else {
+      messageApi.success("登入成功");
+      // messageApi.success("This is a success message") ,
+    }
+  };
+  const onFinishFailed = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
   const increase = () => {
     setSize((prevSize) => {
       const newSize = prevSize + 10;
@@ -138,7 +164,8 @@ const Login = () => {
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Username!",
+                        // message: "Please input your Username!",
+                        message: "請輸入帳號!",
                       },
                     ]}
                   >
@@ -152,7 +179,8 @@ const Login = () => {
                     rules={[
                       {
                         required: true,
-                        message: "Please input your Password!",
+                        // message: "Please input your Password!",
+                        message: "請輸入密碼!",
                       },
                     ]}
                   >
