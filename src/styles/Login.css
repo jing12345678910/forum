@@ -6,7 +6,15 @@
 .container {
   display: flex;
 }
-.qr_code {
+/* .qr_code {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+} */
+
+.ant-layout .main_picture {
   flex: 1;
   display: flex;
   flex-direction: column;

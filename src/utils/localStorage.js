@@ -7,3 +7,10 @@ export const getToken = () => {
 export const removeToken = () => {
   localStorage.getItem("My-TOKEN");
 };
+
+export const setTheme = (theme) => {
+  localStorage.setItem("theme", theme);
+};
+export const getTheme = () => {
+  return localStorage.getItem("theme") || "light";
+};

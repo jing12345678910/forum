@@ -23,7 +23,7 @@ const { Content } = Layout;
 
 const memberName = member[post[0].author - 1].name;
 
-const FoContent = () => {
+const FoHomeContent = () => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -142,4 +142,4 @@ const FoContent = () => {
     </Layout>
   );
 };
-export default FoContent;
+export default FoHomeContent;

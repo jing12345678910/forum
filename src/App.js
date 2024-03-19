@@ -6,6 +6,7 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Collection from "./pages/Collection";
+import "./styles/App.css"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 

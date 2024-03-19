@@ -23,6 +23,8 @@ import "../styles/Login.css";
 import FoSider from "../components/FoSider";
 import FoFooter from "../components/FoFooter";
 import FoHeader from "../components/FoHeader";
+import main_picture from "../imgs/main-picture.jpg"
+import { useTranslation } from "react-i18next";
 
 const { Content, Sider } = Layout;
 
@@ -33,6 +35,8 @@ const { Content, Sider } = Layout;
 // }, [token]);
 const Login = () => {
   const [messageApi, contextHolder] = message.useMessage();
+  
+  const { t } = useTranslation();
 
   const navigate = useNavigate();
   const Params = useParams;
@@ -120,7 +124,7 @@ const Login = () => {
               }}
               className="container"
             >
-              <div className="qr_code">
+              {/* <div className="qr_code">
                 <Button.Group
                   style={{
                     marginBottom: 16,
@@ -147,6 +151,14 @@ const Login = () => {
                   iconSize={size / 4}
                   value="https://ant.design/"
                   icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
+                />
+              </div> */}
+              <div className="main_picture">
+                <img
+                  src={main_picture}
+                  alt="主圖"
+                  width="500"
+                  style={{borderRadius:"80px"}}
                 />
               </div>
               <div className="input_form">
