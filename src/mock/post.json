@@ -1,16 +1,21 @@
 [
   {
     "post-id": 1,
-    "subject": "考試板",
+    "topic-id": 4,
     "title": "我的考卷",
-    "post-content": [
-      { "overview": "求各位大神幫助，我的考卷好難" },
-      { "text": "請問有人可以幫忙解答這張考卷嗎？" },
-      { "photo": "../imgs/animation_photo.jpg" }
-    ],
-    "author":1,
+    "post-content": {
+      "overview": "求各位大神幫助，我的考卷好難",
+      "text": "請問有人可以幫忙解答這張考卷嗎？",
+      "photoPath": "../imgs/animation_photo.jpg"
+    },
+    "author": 1,
     "timestamp": "2024-03-07 12:00",
-    "likes": [{ "thumbs": 27 }, { "crying-face": 58 }, { "heart": 307 }],
+    "likes": {
+      "thumbs": 27,
+      "crying-face": 58,
+      "heart": 307
+    },
+
     "comments": [
       {
         "university": "星星大學",
@@ -38,16 +43,20 @@
   },
   {
     "post-id": 2,
-    "subject": "考試板",
-    "title": "考卷",
-    "post-content": [
-      { "overview": "求各位大神幫助，我的考卷好難" },
-      { "text": "請問有人可以幫忙解答這張考卷嗎？" },
-      { "photo": "../imgs/animation_photo.jpg" }
-    ],
+    "topic-id": 5,
+    "title": "驚見五條悟！",
+    "post-content": {
+      "overview": "澀谷街頭驚見五條悟、七海建人？",
+      "text": "本來在路上遇到高大的人就會特別注意到對方了，何況是相當有名的五條悟跟娜娜明呢？",
+      "photoPath": "../imgs/animation_photo.jpg"
+    },
     "author": 1,
     "timestamp": "2024-03-07 12:00",
-    "likes": [{ "thumbs": 27 }, { "crying-face": 58 }, { "heart": 307 }],
+    "likes": {
+      "thumbs": 57,
+      "crying-face": 79,
+      "heart": 38
+    },
     "comments": [
       {
         "university": "星星大學",
@@ -75,16 +84,21 @@
   },
   {
     "post-id": 3,
-    "subject": "考試板",
+    "topic-id": "考試板",
     "title": "我的",
-    "post-content": [
-      { "overview": "求各位大神幫助，我的考卷好難" },
-      { "text": "請問有人可以幫忙解答這張考卷嗎？" },
-      { "photo": "../imgs/animation_photo.jpg" }
-    ],
+    "post-content": {
+      "overview": "求各位大神幫助，我的考卷好難",
+      "text": "請問有人可以幫忙解答這張考卷嗎？",
+      "photoPath": "../imgs/animation_photo.jpg"
+    },
+
     "author": 1,
     "timestamp": "2024-03-07 12:00",
-    "likes": [{ "thumbs": 27 }, { "crying-face": 58 }, { "heart": 307 }],
+    "likes": {
+      "thumbs": 69,
+      "crying-face": 18,
+      "heart": 49
+    },
     "comments": [
       {
         "university": "星星大學",
