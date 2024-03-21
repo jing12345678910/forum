@@ -11,8 +11,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import FoHeader from "../components/FoHeader";
 import FoSider from "../components/FoSider";
 import FoFooter from "../components/FoFooter";
-import book from "../imgs/book.jpg";
-import cry from "../imgs/cry.jpg";
+// import book from "../imgs/book.jpg";
+// import cry from "../imgs/cry.jpg";
 import "../styles/Post.css";
 const { TextArea } = Input;
 const onChange = (e) => {
@@ -52,7 +52,7 @@ const Post = () => {
               }}
             >
               <div className="board">
-                <img src={book} width={50} alt="書" />
+                {/* <img src={book} width={50} alt="書" /> */}
                 <p>考試版</p>
                 <p>
                   <a href="#">追蹤</a>
@@ -76,7 +76,7 @@ const Post = () => {
                 大部分都比自己年輕漂亮 大家對於問年齡話題有什麼好的應對方式嗎
                 或是要怎麼釋懷被比較年齡 以及被叫老妹阿姨之類的狀況
               </p>
-              <img src={cry} width={150} alt="" />
+              {/* <img src={cry} width={150} alt="" /> */}
               <>
                 <Divider orientation="left"></Divider>
                 <div className="tags_responses">

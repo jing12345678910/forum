@@ -23,7 +23,7 @@ import "../styles/Login.css";
 import FoSider from "../components/FoSider";
 import FoFooter from "../components/FoFooter";
 import FoHeader from "../components/FoHeader";
-import main_picture from "../imgs/main-picture.jpg"
+import main_picture from "../srcImages/main-picture.jpg";
 import { useTranslation } from "react-i18next";
 
 const { Content, Sider } = Layout;
@@ -35,7 +35,7 @@ const { Content, Sider } = Layout;
 // }, [token]);
 const Login = () => {
   const [messageApi, contextHolder] = message.useMessage();
-  
+
   const { t } = useTranslation();
 
   const navigate = useNavigate();
@@ -110,8 +110,8 @@ const Login = () => {
               margin: "16px 0",
             }}
           >
-            <Breadcrumb.Item>首頁</Breadcrumb.Item>
-            <Breadcrumb.Item>登入</Breadcrumb.Item>
+            <Breadcrumb.Item>{t("home")}</Breadcrumb.Item>
+            <Breadcrumb.Item>{t("login")}</Breadcrumb.Item>
           </Breadcrumb>
           <div>
             <Content
@@ -158,11 +158,11 @@ const Login = () => {
                   src={main_picture}
                   alt="主圖"
                   width="500"
-                  style={{borderRadius:"80px"}}
+                  style={{ borderRadius: "80px" }}
                 />
               </div>
               <div className="input_form">
-                <h1>登入</h1>
+                <h1>{t("login")}</h1>
                 <Form
                   name="normal_login"
                   className="login-form"
@@ -183,7 +183,7 @@ const Login = () => {
                   >
                     <Input
                       prefix={<UserOutlined className="site-form-item-icon" />}
-                      placeholder="常用信箱"
+                      placeholder={t("CommonlyUsedEmails")}
                     />
                   </Form.Item>
                   <Form.Item
@@ -199,16 +199,16 @@ const Login = () => {
                     <Input
                       prefix={<LockOutlined className="site-form-item-icon" />}
                       type="password"
-                      placeholder="密碼"
+                      placeholder={t("password")}
                     />
                   </Form.Item>
                   <Form.Item>
                     <Form.Item name="remember" valuePropName="checked" noStyle>
-                      <Checkbox>記得我</Checkbox>
+                      <Checkbox>{t("rememberMe")}</Checkbox>
                     </Form.Item>
 
                     <a className="login-form-forgot" href="#">
-                      忘記密碼
+                      {t("forgetPassword")}
                     </a>
                   </Form.Item>
 
@@ -218,9 +218,9 @@ const Login = () => {
                       htmlType="submit"
                       className="login-form-button"
                     >
-                      登入
+                      {t("login")}
                     </Button>
-                    或 <a href="/signup">註冊</a>
+                    {t("or")} <a href="/signup"> {t("signup")}</a>
                   </Form.Item>
                 </Form>
               </div>

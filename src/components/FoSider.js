@@ -1,23 +1,28 @@
 import React from "react";
-import { RiseOutlined } from "@ant-design/icons";
+import { FireFilled, FileTextFilled, BulbFilled } from "@ant-design/icons";
 import { Layout, Menu, Divider } from "antd";
 
+import topics from "../mock/topics.json";
+import FoTopicIcons from "./FoTopicIcons";
 import "../styles/App.css";
+import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
 
-const customItems = [
-  { key: "1", icon: <RiseOutlined />, label: "即時熱門看板" },
-  { key: "2", icon: <RiseOutlined />, label: "所有看板" },
-  { key: "3", icon: <RiseOutlined />, label: "創作者排行榜" },
-];
-const categories = [
-  { key: "1", icon: <RiseOutlined />, label: "股票版" },
-  { key: "2", icon: <RiseOutlined />, label: "股票版" },
-  { key: "3", icon: <RiseOutlined />, label: "股票版" },
-];
+
 
 const FoSider = () => {
+  const { t } = useTranslation();
+  const customItems = [
+    { key: "1", icon: <FireFilled />, label: t("hot") },
+    { key: "2", icon: <FileTextFilled />, label: t("all") },
+    { key: "3", icon: <BulbFilled />, label: t("creatorRanking") },
+  ];
+  const categories = topics.map((topic) => ({
+    key: topic["topic-id"].toString(),
+    icon: FoTopicIcons()[topic.icon],
+    label: t(topic["topic-name"]),
+  }));
   return (
     <Layout>
       <Sider
@@ -31,19 +36,9 @@ const FoSider = () => {
         }}
       >
         <div className="demo-logo-vertical" />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["4"]}
-          items={customItems}
-        />
+        <Menu theme="dark" mode="inline" items={customItems} />
         <Divider />
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={["4"]}
-          items={categories}
-        />
+        <Menu theme="dark" mode="inline" items={categories} />
       </Sider>
     </Layout>
   );

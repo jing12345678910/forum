@@ -9,7 +9,7 @@ import {
   Dropdown,
   message,
 } from "antd";
-import logo from "../imgs/logo.jpg";
+import logo from "../srcImages/logo.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { GlobalOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
