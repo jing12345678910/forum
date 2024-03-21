@@ -8,6 +8,8 @@ import {
   Flex,
   Dropdown,
   message,
+  QRCode,
+  Popover,
 } from "antd";
 import logo from "../srcImages/logo.jpg";
 import { Link, useNavigate } from "react-router-dom";
@@ -108,9 +110,20 @@ const FoHeader = ({ isLoginPage }) => {
                     {t("login")}
                   </Button>
                 )}
-                <Button type="primary" size={size}>
-                  {t("download")}
-                </Button>
+
+                <Popover
+                  overlayInnerStyle={{
+                    padding: 0,
+                  }}
+                  content={
+                    <QRCode value="https://ant.design" bordered={false} />
+                  }
+                >
+                  <Button type="primary" size={size}>
+                    {t("download")}
+                  </Button>
+                </Popover>
+
                 <Dropdown menu={{ items }}>
                   <Button onClick={(e) => e.preventDefault()}>
                     <GlobalOutlined />

@@ -14,6 +14,9 @@ import FoFooter from "../components/FoFooter";
 // import book from "../imgs/book.jpg";
 // import cry from "../imgs/cry.jpg";
 import "../styles/Post.css";
+import { useTranslation } from "react-i18next";
+import post from "../mock/post.json"
+import topics from "../mock/topics.json";
 const { TextArea } = Input;
 const onChange = (e) => {
   console.log("Change:", e.target.value);
@@ -21,6 +24,7 @@ const onChange = (e) => {
 
 const { Content, Sider } = Layout;
 const Post = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const params = useParams();
   const { id } = params;
@@ -53,7 +57,7 @@ const Post = () => {
             >
               <div className="board">
                 {/* <img src={book} width={50} alt="書" /> */}
-                <p>考試版</p>
+                <p>考試板</p>
                 <p>
                   <a href="#">追蹤</a>
                 </p>
