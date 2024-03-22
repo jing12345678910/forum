@@ -5,4 +5,8 @@ export const homeApi = {
     const { data } = await server.get("/member");
     return data;
   },
+  getPostData: async () => {
+    const { data } = await server.get("/post");
+    return data;
+  },
 };

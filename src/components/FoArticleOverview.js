@@ -9,7 +9,7 @@ import {
 import { theme, Space, Divider } from "antd";
 import "../styles/FoContent.css";
 import post from "../mock/post.json";
-import member from "../mock/member.json";
+import members from "../mock/members.json";
 import topics from "../mock/topics.json";
 import { useTranslation } from "react-i18next";
 
@@ -38,7 +38,7 @@ const FoArticleOverview = () => {
           <React.Fragment key={index}>
             <p>
               {t(topicMap[item["topic-id"]])} . <SmileTwoTone />
-              {t(member[item.author - 1].name)} . {item.timestamp}
+              {t(members[item.author - 1].name)} . {item.timestamp}
             </p>
             <h2>{item.title}</h2>
             <div className="article_summary">

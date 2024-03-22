@@ -15,24 +15,72 @@ import FoFooter from "../components/FoFooter";
 // import cry from "../imgs/cry.jpg";
 import "../styles/Post.css";
 import { useTranslation } from "react-i18next";
-import post from "../mock/post.json"
-import topics from "../mock/topics.json";
-const { TextArea } = Input;
-const onChange = (e) => {
-  console.log("Change:", e.target.value);
-};
 
+import topics from "../mock/topics.json";
+import membersData from "../mock/members.json";
+import { homeApi } from "../api/module/home";
+const { TextArea } = Input;
 const { Content, Sider } = Layout;
+
 const Post = () => {
-  const { t } = useTranslation();
   const navigate = useNavigate();
   const params = useParams();
+
   const { id } = params;
-  // navigate(`./post/${id}`);
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
+
+  return (
+    <PostContent
+      id={id}
+      colorBgContainer={colorBgContainer}
+      borderRadiusLG={borderRadiusLG}
+    />
+  );
+};
+const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
+  const { t } = useTranslation();
+  const [postData, setPostData] = useState(null);
   const [value, setValue] = useState("");
+  const membersDataState = useState([]);
+
+  useEffect(() => {
+    const getPostData = async () => {
+      try {
+        const data = await homeApi.getPostData();
+        console.log(data);
+        setPostData(data);
+      } catch (error) {
+        console.error("獲取貼文資料錯誤", error);
+      }
+    };
+    getPostData();
+  }, [id]);
+  if (!postData) {
+    return <div>Loading</div>;
+  }
+
+  const post = postData.find((item) => item["post-id"] === parseInt(id));
+  if (!post) {
+    return <div>Post not found</div>;
+  }
+  const {
+    title,
+    "topic-id": topicId,
+    "post-content": postContent,
+    author,
+  } = post;
+
+  const topic = topics.find((topic) => topic["topic-id"] === topicId);
+  const topicName = topic ? topic["topic-name"] : "";
+
+  const member = membersData.find(
+    (member) => member["member-id"] === author
+  );
+  const authorName = member ? member["name"] : "";
+  // navigate(`./post/${id}`);
+
   return (
     <Layout>
       <Sider>
@@ -57,29 +105,21 @@ const Post = () => {
             >
               <div className="board">
                 {/* <img src={book} width={50} alt="書" /> */}
-                <p>考試板</p>
+                <p>{t(topicName)}</p>
+
                 <p>
-                  <a href="#">追蹤</a>
+                  <a href="#">{t("follow")}</a>
                 </p>
               </div>
               <Divider />
 
-              <h1>對年齡好焦慮</h1>
+              <h1>{title}</h1>
               <div className="board">
                 <SmileTwoTone />
-                <p>匿名</p>
+                <p>{t(authorName)}</p>
                 <p>2022 年 12 月 29 日 00:35</p>
               </div>
-              <p>
-                過了25就覺得年齡是個好尷尬的話題🥲不知道有沒有女生懂我
-                無法避免自己終有一天會變老妹阿姨
-                被這樣叫不是很開心（我不會這樣叫其他比我大的姐姐）對於網友或是非求學生活圈的人
-                我都不敢說出我的實際年齡 只敢開玩笑帶過或謊報一個年齡
-                常常被問你是大學生嗎都覺得很心虛 本人實際年齡已經要27
-                雖然真的被猜中年齡也不會開心 因為ig偶爾會接觸到一些網美
-                大部分都比自己年輕漂亮 大家對於問年齡話題有什麼好的應對方式嗎
-                或是要怎麼釋懷被比較年齡 以及被叫老妹阿姨之類的狀況
-              </p>
+              <p>{postContent.text}</p>
               {/* <img src={cry} width={150} alt="" /> */}
               <>
                 <Divider orientation="left"></Divider>
