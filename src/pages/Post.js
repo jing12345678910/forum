@@ -64,12 +64,7 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
   if (!post) {
     return <div>Post not found</div>;
   }
-  const {
-    title,
-    postContent,
-    topic,
-    name,
-  } = post;
+  const { title, topic, name, text } = post;
 
   // navigate(`./post/${id}`);
 
@@ -111,7 +106,7 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
                 <p>{t(name)}</p>
                 <p>2022 年 12 月 29 日 00:35</p>
               </div>
-              <p>{postContent.text}</p>
+              <p>{text}</p>
               {/* <img src={cry} width={150} alt="" /> */}
               <>
                 <Divider orientation="left"></Divider>

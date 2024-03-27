@@ -16,7 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { GlobalOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { useAppStore } from "../store/AppStore"; // 1
-import { getTheme, setTheme } from "../utils/localStorage";
+import { setPost,getPost, getTheme, setTheme } from "../utils/localStorage";
 import { homeApi } from "../api/module/home";
 
 import i18n from "../i18n";
@@ -41,7 +41,36 @@ const items = [
   },
 ];
 
-const FoHeader = ({ isLoginPage }) => {
+const FoHeader = ({ isLoginPage, handleAddPost }) => {
+  
+  
+    const addPost = (newData) => {
+      //1.獲取數據
+      const data = getPost();
+      console.log(data);
+      //2.定義新增數據
+      const post = {
+        postID: Math.round(Math.random() * 100),
+        topic: "exam",
+        title: "必讀章節",
+        overview: "讀書戰士們加油",
+        text: "好想上榜～～～ 讀書戰士們加油",
+        photoPath: "images/book.jpg",
+        name: "anna",
+        likes: {
+          thumbs: 0,
+          cryingFace: 0,
+          heart: 0,
+        },
+        creatAt: 1711181251,
+        comments: [],
+      };
+      const newPosts = [...data, post];
+      //3.存進數據庫=>更新資料
+      setPost(newPosts);
+     
+    
+    handleAddPost(post)}
   const navigate = useNavigate();
   const {
     token: { colorBgContainer },
@@ -112,6 +141,9 @@ const FoHeader = ({ isLoginPage }) => {
           <div className="header_right">
             <Flex gap="small" align="flex-start" vertical>
               <Flex gap="small" wrap="wrap">
+                <Button size={size} onClick={addPost}>
+                  {t("addNewPost")}
+                </Button>
                 {isLoginPage ? (
                   <Button size={size} onClick={() => navigate("/signup")}>
                     {t("signup")}

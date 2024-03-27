@@ -13,7 +13,7 @@ import { homeApi } from "../api/module/home";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const FoArticleOverview = () => {
+const FoArticleOverview = ({ data }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [postData, setPostData] = useState(null);
@@ -44,8 +44,8 @@ const FoArticleOverview = () => {
       }}
     >
       <>
-        {postData &&
-          postData.map((item, index) => (
+        {data &&
+          data.map((item, index) => (
             <React.Fragment key={index}>
               <p>
                 {t(item.topic)} . <SmileTwoTone />
@@ -53,24 +53,20 @@ const FoArticleOverview = () => {
               </p>
               <h2>{item.title}</h2>
               <div className="article_summary">
-                <p>{item.postContent.overview}</p>
-                <img
-                  width={100}
-                  src={item.postContent.photoPath}
-                  alt="contentPhoto"
-                />
+                <p>{item.overview}</p>
+                <img width={100} src={item.photoPath} alt="contentPhoto" />
               </div>
               <div className="respond">
                 <Space className="likes">
                   <LikeTwoTone />
-                  <p>{item.likes.thumbs}</p>
+                  <p>{item.likes && item.likes.thumbs}</p>
                   <FrownTwoTone twoToneColor="#52c41a" />
-                  <p>{item.likes.cryingFace}</p>
+                  <p>{item.likes && item.likes.cryingFace}</p>
                 </Space>
 
                 <Space className="comment">
                   <MessageOutlined />
-                  <p>{item.comments.length}</p>
+                  <p>{item.comments && item.comments.length}</p>
                 </Space>
 
                 <Space className="button_collect">
@@ -81,7 +77,7 @@ const FoArticleOverview = () => {
                     type="primary"
                     icon={<PoweroffOutlined />}
                     onClick={() => navigate(`/post/${item.postID}`)}
-                    style={{marginLeft:'3rem'}}
+                    style={{ marginLeft: "3rem" }}
                   >
                     {t("clickMe")}
                   </Button>
