@@ -2,8 +2,9 @@ import React from "react";
 import { FireFilled, FileTextFilled, BulbFilled } from "@ant-design/icons";
 import { Layout, Menu, Divider } from "antd";
 
-import topics from "../mock/topics.json";
+
 import FoTopicIcons from "./FoTopicIcons";
+
 import "../styles/App.css";
 import { useTranslation } from "react-i18next";
 
@@ -18,10 +19,9 @@ const FoSider = () => {
     { key: "2", icon: <FileTextFilled />, label: t("all") },
     { key: "3", icon: <BulbFilled />, label: t("creatorRanking") },
   ];
-  const categories = topics.map((topic) => ({
-    key: topic["topic-id"].toString(),
-    icon: FoTopicIcons()[topic.icon],
-    label: t(topic["topic-name"]),
+  const categories = FoTopicIcons().map((topic) => ({
+    icon: topic.icon,
+    label: topic.topicName,
   }));
   return (
     <Layout>

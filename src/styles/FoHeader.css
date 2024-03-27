@@ -9,3 +9,8 @@
 .header_right {
   margin-right: 1rem;
 }
+
+
+.header_right .ant-flex .ant-btn {
+  height: 40px;
+}

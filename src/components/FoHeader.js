@@ -17,12 +17,11 @@ import { GlobalOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { useAppStore } from "../store/AppStore"; // 1
 import { getTheme, setTheme } from "../utils/localStorage";
-import "../mock/post.json";
+import { homeApi } from "../api/module/home";
 
 import i18n from "../i18n";
 
 import "../styles/FoHeader.css";
-import posts from "../mock/post.json";
 
 const { Header } = Layout;
 
@@ -50,6 +49,7 @@ const FoHeader = ({ isLoginPage }) => {
   const [size] = useState("large"); // default is 'middle'
   const [searchValue, setSearchValue] = useState("");
   const { t } = useTranslation();
+  const [postData, setPostData] = useState(null);
   const appStore = useAppStore();
   const [messageApi, contextHolder] = message.useMessage();
   const { isLightMode, setIsLightMode } = appStore;
@@ -67,10 +67,21 @@ const FoHeader = ({ isLoginPage }) => {
   const onSearch = (e) => {
     setSearchValue(e.target.value);
     const keyword = e.target.value.trim();
-    const filterPost = posts.filter((post) => post.title.includes(keyword));
+    const filterPost = postData.filter((post) => post.title.includes(keyword));
     console.log(filterPost);
   };
-
+  useEffect(() => {
+    const getPostData = async () => {
+      try {
+        const data = await homeApi.getPostData();
+        console.log(data);
+        setPostData(data);
+      } catch (error) {
+        console.error("獲取貼文資料錯誤", error);
+      }
+    };
+    getPostData();
+  }, []);
   useEffect(() => {
     const currentTheme = getTheme(); // 預設 light
     setBodyThemeClass(currentTheme);

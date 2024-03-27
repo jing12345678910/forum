@@ -16,8 +16,7 @@ import FoFooter from "../components/FoFooter";
 import "../styles/Post.css";
 import { useTranslation } from "react-i18next";
 
-import topics from "../mock/topics.json";
-import membersData from "../mock/members.json";
+
 import { homeApi } from "../api/module/home";
 const { TextArea } = Input;
 const { Content, Sider } = Layout;
@@ -61,24 +60,17 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
     return <div>Loading</div>;
   }
 
-  const post = postData.find((item) => item["post-id"] === parseInt(id));
+  const post = postData.find((item) => item.postID === parseInt(id));
   if (!post) {
     return <div>Post not found</div>;
   }
   const {
     title,
-    "topic-id": topicId,
-    "post-content": postContent,
-    author,
+    postContent,
+    topic,
+    name,
   } = post;
 
-  const topic = topics.find((topic) => topic["topic-id"] === topicId);
-  const topicName = topic ? topic["topic-name"] : "";
-
-  const member = membersData.find(
-    (member) => member["member-id"] === author
-  );
-  const authorName = member ? member["name"] : "";
   // navigate(`./post/${id}`);
 
   return (
@@ -105,7 +97,7 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
             >
               <div className="board">
                 {/* <img src={book} width={50} alt="書" /> */}
-                <p>{t(topicName)}</p>
+                <p>{t(topic)}</p>
 
                 <p>
                   <a href="#">{t("follow")}</a>
@@ -116,7 +108,7 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
               <h1>{title}</h1>
               <div className="board">
                 <SmileTwoTone />
-                <p>{t(authorName)}</p>
+                <p>{t(name)}</p>
                 <p>2022 年 12 月 29 日 00:35</p>
               </div>
               <p>{postContent.text}</p>

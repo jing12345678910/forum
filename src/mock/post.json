@@ -1,18 +1,18 @@
 [
   {
-    "post-id": 1,
-    "topic-id": 4,
+    "postID": 1,
+    "topic": "exam",
     "title": "我的考卷",
-    "post-content": {
+    "postContent": {
       "overview": "求各位大神幫助，我的考卷好難",
       "text": "請問有人可以幫忙解答這張考卷嗎？",
       "photoPath": "images/exam.jpg"
     },
-    "author": 1,
+    "name": "anna",
     "timestamp": "2024-03-07 12:00",
     "likes": {
       "thumbs": 27,
-      "crying-face": 58,
+      "cryingFace": 58,
       "heart": 307
     },
 
@@ -42,19 +42,19 @@
     "article-discussion-video": "https://www.youtube.com/watch?v=LQU6jK6FOYs&t=754s"
   },
   {
-    "post-id": 2,
-    "topic-id": 6,
+    "postID": 2,
+    "topic": "music",
     "title": "最愛的樂器",
-    "post-content": {
+    "postContent": {
       "overview": "分享一下大家最喜歡的樂器吧！",
       "text": "最近對吉他越來越著迷，想學彈奏。",
       "photoPath": "images/music.jpg"
     },
-    "author": 2,
+    "name": "ming",
     "timestamp": "2024-03-08 14:30",
     "likes": {
       "thumbs": 45,
-      "crying-face": 12,
+      "cryingFace": 12,
       "heart": 87
     },
     "comments": [
@@ -76,19 +76,19 @@
     "article-discussion-video": "https://www.youtube.com/watch?v=RsIhZWQv4G0"
   },
   {
-    "post-id": 3,
-    "topic-id": 12,
+    "postID": 3,
+    "topic": "travel",
     "title": "最近的旅行",
-    "post-content": {
+    "postContent": {
       "overview": "分享一下最近的旅行經驗",
       "text": "剛從日本旅行回來，感受到了不一樣的文化魅力。",
       "photoPath": "images/japan.jpg"
     },
-    "author": 3,
+    "name": "lily",
     "timestamp": "2024-03-10 10:45",
     "likes": {
       "thumbs": 102,
-      "crying-face": 8,
+      "cryingFace": 8,
       "heart": 210
     },
     "comments": [
@@ -110,19 +110,19 @@
     "article-discussion-video": "https://www.youtube.com/watch?v=7u1l5UzGeeI"
   },
   {
-    "post-id": 4,
-    "topic-id": 8,
+    "postID": 4,
+    "topic": "variety",
     "title": "最新綜藝節目",
-    "post-content": {
+    "postContent": {
       "overview": "大家有沒有看過最新的綜藝節目？",
       "text": "最近有一個很受歡迎的綜藝節目，有興趣的可以一起討論一下。",
       "photoPath": "images/variety.jpg"
     },
-    "author": 4,
+    "name": "david",
     "timestamp": "2024-03-15 18:20",
     "likes": {
       "thumbs": 35,
-      "crying-face": 10,
+      "cryingFace": 10,
       "heart": 150
     },
     "comments": [
@@ -144,19 +144,19 @@
     "article-discussion-video": "https://www.youtube.com/watch?v=z5OIjtZsgYo"
   },
   {
-    "post-id": 5,
-    "topic-id": 10,
+    "postID": 5,
+    "topic": "pet",
     "title": "寵物日常",
-    "post-content": {
+    "postContent": {
       "overview": "分享你和寵物的日常生活！",
       "text": "無論是貓還是狗，都希望看到大家與寵物的可愛互動。",
       "photoPath": "images/cat.jpg"
     },
-    "author": 5,
+    "name": "alice",
     "timestamp": "2024-03-18 09:45",
     "likes": {
       "thumbs": 48,
-      "crying-face": 5,
+      "cryingFace": 5,
       "heart": 280
     },
     "comments": [
@@ -178,19 +178,19 @@
     "article-discussion-video": "https://www.youtube.com/watch?v=Q0sCUhN3iKM"
   },
   {
-    "post-id": 6,
-    "topic-id": 2,
+    "postID": 6,
+    "topic": "mood",
     "title": "最近心情不好",
-    "post-content": {
+    "postContent": {
       "overview": "最近感覺心情很低落，不知道該怎麼辦。",
       "text": "有人有心情不好的時候，都是怎麼自我調適的呢？",
       "photoPath": "images/sad.jpg"
     },
-    "author": 2,
+    "name": "ming",
     "timestamp": "2024-03-10 15:45",
     "likes": {
       "thumbs": 12,
-      "crying-face": 6,
+      "cryingFace": 6,
       "heart": 30
     },
     "comments": [
@@ -212,19 +212,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 7,
-    "topic-id": 12,
+    "postID": 7,
+    "topic": "travel",
     "title": "最愛的旅遊目的地",
-    "post-content": {
+    "postContent": {
       "overview": "跟大家分享一下自己最愛的旅遊目的地。",
       "text": "有人也喜歡去我喜歡的地方旅遊嗎？",
       "photoPath": "images/travel.jpg"
     },
-    "author": 3,
+    "name": "lily",
     "timestamp": "2024-03-14 09:30",
     "likes": {
       "thumbs": 25,
-      "crying-face": 3,
+      "cryingFace": 3,
       "heart": 48
     },
     "comments": [
@@ -246,19 +246,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 8,
-    "topic-id": 6,
+    "postID": 8,
+    "topic": "music",
     "title": "最愛的音樂類型",
-    "post-content": {
+    "postContent": {
       "overview": "想和大家討論一下最喜歡的音樂類型。",
       "text": "大家平常聽什麼類型的音樂？有沒有推薦的歌曲？",
       "photoPath": "images/singer 1.jpg"
     },
-    "author": 4,
+    "name": "david",
     "timestamp": "2024-03-18 17:20",
     "likes": {
       "thumbs": 15,
-      "crying-face": 2,
+      "cryingFace": 2,
       "heart": 35
     },
     "comments": [
@@ -280,19 +280,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 9,
-    "topic-id": 10,
+    "postID": 9,
+    "topic": "pet",
     "title": "寵物小精靈的魅力",
-    "post-content": {
+    "postContent": {
       "overview": "今天想分享一下寵物小精靈給我的快樂。",
       "text": "大家有沒有喜歡的寵物小精靈？你最喜歡的一隻是誰？",
       "photoPath": "images/pokemon.jpg"
     },
-    "author": 5,
+    "name": "alice",
     "timestamp": "2024-03-19 10:10",
     "likes": {
       "thumbs": 20,
-      "crying-face": 1,
+      "cryingFace": 1,
       "heart": 40
     },
     "comments": [
@@ -314,19 +314,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 10,
-    "topic-id": 12,
+    "postID": 10,
+    "topic": "travel",
     "title": "夢想中的旅遊目的地",
-    "post-content": {
+    "postContent": {
       "overview": "和大家分享一下夢想中的旅遊目的地，一起來展望未來的旅程。",
       "text": "你們最想去的旅遊目的地是哪裡？是海邊還是山上？",
       "photoPath": "images/maldives.jpg"
     },
-    "author": 6,
+    "name": "george",
     "timestamp": "2024-03-19 14:45",
     "likes": {
       "thumbs": 25,
-      "crying-face": 3,
+      "cryingFace": 3,
       "heart": 42
     },
     "comments": [
@@ -348,19 +348,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 11,
-    "topic-id": 14,
+    "postID": 11,
+    "topic": "sports",
     "title": "最喜歡的運動",
-    "post-content": {
+    "postContent": {
       "overview": "想聊一聊大家最喜歡的運動，分享運動帶給你們的快樂。",
       "text": "你們平常都喜歡做什麼運動？運動對你們的生活有什麼影響？",
       "photoPath": "images/sports.jpg"
     },
-    "author": 14,
+    "name": "chris",
     "timestamp": "2024-03-19 18:30",
     "likes": {
       "thumbs": 30,
-      "crying-face": 1,
+      "cryingFace": 1,
       "heart": 50
     },
     "comments": [
@@ -382,19 +382,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 12,
-    "topic-id": 2,
+    "postID": 12,
+    "topic": "mood",
     "title": "分享一下最近的心情",
-    "post-content": {
+    "postContent": {
       "overview": "想和大家分享一下最近的心情，一起來交流彼此的情緒。",
       "text": "你們最近的心情如何？有什麼開心或煩惱的事情想要分享嗎？",
       "photoPath": "images/mood.jpg"
     },
-    "author": 17,
+    "name": "coco",
     "timestamp": "2024-03-20 10:15",
     "likes": {
       "thumbs": 15,
-      "crying-face": 5,
+      "cryingFace": 5,
       "heart": 28
     },
     "comments": [
@@ -416,19 +416,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 13,
-    "topic-id": 5,
+    "postID": 13,
+    "topic": "animation",
     "title": "最愛的動漫角色",
-    "post-content": {
+    "postContent": {
       "overview": "來分享一下大家最愛的動漫角色，一起來討論各種動漫的魅力。",
       "text": "你們最喜歡的動漫角色是誰？為什麼他或她吸引著你們？",
       "photoPath": "images/animation.jpg"
     },
-    "author": 8,
+    "name": "tom",
     "timestamp": "2024-03-20 15:40",
     "likes": {
       "thumbs": 20,
-      "crying-face": 8,
+      "cryingFace": 8,
       "heart": 35
     },
     "comments": [
@@ -450,19 +450,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 14,
-    "topic-id": 10,
+    "postID": 14,
+    "topic": "pet",
     "title": "我家的可愛寵物",
-    "post-content": {
+    "postContent": {
       "overview": "想和大家分享一下我家的可愛寵物，讓大家一起來欣賞他們的可愛模樣。",
       "text": "你們家裡有什麼樣的寵物？可以和大家分享一下他們的照片或有趣的故事嗎？",
       "photoPath": "images/dog.jpg"
     },
-    "author": 19,
+    "name": "james",
     "timestamp": "2024-03-20 18:30",
     "likes": {
       "thumbs": 10,
-      "crying-face": 3,
+      "cryingFace": 3,
       "heart": 15
     },
     "comments": [
@@ -484,19 +484,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 15,
-    "topic-id": 12,
+    "postID": 15,
+    "topic": "travel",
     "title": "埃及",
-    "post-content": {
+    "postContent": {
       "overview": "求埃及景點",
       "text": "大家有去過埃及嗎？推薦什麼景點?",
       "photoPath": "images/egypt.jpg"
     },
-    "author": 20,
+    "name": "peter",
     "timestamp": "2024-03-21 09:45",
     "likes": {
       "thumbs": 18,
-      "crying-face": 2,
+      "cryingFace": 2,
       "heart": 25
     },
     "comments": [
@@ -518,19 +518,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 16,
-    "topic-id": 6,
+    "postID": 16,
+    "topic": "music",
     "title": "音樂推薦",
-    "post-content": {
+    "postContent": {
       "overview": "分享一下最近聽的音樂，或者推薦一些好聽的歌曲給大家。",
       "text": "最近有什麼好聽的歌曲推薦嗎？一起來分享一下自己的音樂喜好吧！",
       "photoPath": "images/singer 2.jpg"
     },
-    "author": 16,
+    "name": "bell",
     "timestamp": "2024-03-22 15:20",
     "likes": {
       "thumbs": 30,
-      "crying-face": 5,
+      "cryingFace": 5,
       "heart": 40
     },
     "comments": [
@@ -552,19 +552,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 17,
-    "topic-id": 11,
+    "postID": 17,
+    "topic": "gourmet",
     "title": "美食分享：自製披薩",
-    "post-content": {
+    "postContent": {
       "overview": "來分享一下自己做的美味披薩，或者提供一些披薩製作的技巧和心得。",
       "text": "你們喜歡吃披薩嗎？有什麼特別的配料或烹飪方法可以分享給大家嗎？",
       "photoPath": "images/pizza.jpg"
     },
-    "author": 17,
+    "name": "coco",
     "timestamp": "2024-03-23 12:45",
     "likes": {
       "thumbs": 22,
-      "crying-face": 3,
+      "cryingFace": 3,
       "heart": 35
     },
     "comments": [
@@ -586,19 +586,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 18,
-    "topic-id": 9,
+    "postID": 18,
+    "topic": "idol",
     "title": "最喜歡的偶像演唱會",
-    "post-content": {
+    "postContent": {
       "overview": "分享一下自己最喜歡的偶像演唱會回憶，或者討論即將舉行的偶像演唱會。",
       "text": "你們有參加過什麼精彩的偶像演唱會嗎？或者有什麼偶像的演唱會特別值得期待的？",
       "photoPath": "images/singer 3.jpg"
     },
-    "author": 18,
+    "name": "simon",
     "timestamp": "2024-03-24 18:30",
     "likes": {
       "thumbs": 15,
-      "crying-face": 7,
+      "cryingFace": 7,
       "heart": 28
     },
     "comments": [
@@ -620,19 +620,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 19,
-    "topic-id": 12,
+    "postID": 19,
+    "topic": "travel",
     "title": "夢想中的旅行目的地",
-    "post-content": {
+    "postContent": {
       "overview": "和大家討論一下夢想中最想去的旅行目的地，或者分享一些美麗的旅行經歷。",
       "text": "你們有沒有夢想中的旅行目的地？或者有沒有去過一些讓你印象深刻的旅行景點？",
       "photoPath": "images/switzerland.jpg"
     },
-    "author": 19,
+    "name": "james",
     "timestamp": "2024-03-25 10:15",
     "likes": {
       "thumbs": 20,
-      "crying-face": 4,
+      "cryingFace": 4,
       "heart": 32
     },
     "comments": [
@@ -654,19 +654,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 20,
-    "topic-id": 13,
+    "postID": 20,
+    "topic": "outfit",
     "title": "最新潮穿搭分享",
-    "post-content": {
+    "postContent": {
       "overview": "分享最近流行的穿搭趨勢，或者展示自己的時尚搭配。",
       "text": "大家有什麼最新潮的穿搭靈感嗎？或者可以分享一些自己最喜歡的時尚風格。",
       "photoPath": "images/outfit.jpg"
     },
-    "author": 20,
+    "name": "peter",
     "timestamp": "2024-03-26 15:45",
     "likes": {
       "thumbs": 10,
-      "crying-face": 3,
+      "cryingFace": 3,
       "heart": 25
     },
     "comments": [
@@ -688,19 +688,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 21,
-    "topic-id": 14,
+    "postID": 21,
+    "topic": "sports",
     "title": "最近的體育盛事",
-    "post-content": {
+    "postContent": {
       "overview": "討論最近的體育盛事，或者分享自己對體育的熱愛。",
       "text": "大家有什麼最近關注的體育賽事嗎？或者可以分享一些自己的體育運動經驗。",
       "photoPath": "images/basketball.jpg"
     },
-    "author": 18,
+    "name": "simon",
     "timestamp": "2024-03-27 09:30",
     "likes": {
       "thumbs": 12,
-      "crying-face": 2,
+      "cryingFace": 2,
       "heart": 20
     },
     "comments": [
@@ -722,19 +722,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 22,
-    "topic-id": 15,
+    "postID": 22,
+    "topic": "work",
     "title": "最近的打工經驗分享",
-    "post-content": {
+    "postContent": {
       "overview": "分享最近的打工經驗，或者討論有關打工的各種話題。",
       "text": "大家最近有什麼有趣的打工經驗嗎？或者可以分享一些自己的工作心得。",
       "photoPath": "images/work.jpg"
     },
-    "author": 18,
+    "name": "simon",
     "timestamp": "2024-03-28 14:20",
     "likes": {
       "thumbs": 15,
-      "crying-face": 5,
+      "cryingFace": 5,
       "heart": 18
     },
     "comments": [
@@ -756,19 +756,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 23,
-    "topic-id": 1,
+    "postID": 23,
+    "topic": "stock",
     "title": "最新股票趨勢討論",
-    "post-content": {
+    "postContent": {
       "overview": "討論最新的股票市場動向，或者分享自己的投資心得。",
       "text": "大家對最近的股票市場有什麼看法嗎？或者可以分享一些自己的投資策略。",
       "photoPath": "images/stock.jpg"
     },
-    "author": 5,
+    "name": "alice",
     "timestamp": "2024-03-29 11:10",
     "likes": {
       "thumbs": 20,
-      "crying-face": 3,
+      "cryingFace": 3,
       "heart": 30
     },
     "comments": [
@@ -790,19 +790,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 24,
-    "topic-id": 7,
+    "postID": 24,
+    "topic": "drama",
     "title": "最新戲劇推薦",
-    "post-content": {
+    "postContent": {
       "overview": "分享最新的戲劇作品，或者討論有關戲劇的各種話題。",
       "text": "最近有什麼好看的戲劇推薦嗎？或者可以分享一些自己喜歡的戲劇作品。",
       "photoPath": "images/drama.jpg"
     },
-    "author": 7,
+    "name": "emily",
     "timestamp": "2024-03-30 15:45",
     "likes": {
       "thumbs": 12,
-      "crying-face": 6,
+      "cryingFace": 6,
       "heart": 25
     },
     "comments": [
@@ -824,19 +824,19 @@
     "article-discussion-video": ""
   },
   {
-    "post-id": 25,
-    "topic-id": 2,
+    "postID": 25,
+    "topic": "mood",
     "title": "對年齡好焦慮",
-    "post-content": {
+    "postContent": {
       "overview": "分過了25就覺得年齡是個好尷尬的話題🥲不知道有沒有女生懂我?",
       "text": "過了25就覺得年齡是個好尷尬的話題🥲不知道有沒有女生懂我?無法避免自己終有一天會變老妹... 被這樣叫不是很開心（我不會這樣叫其他比我大的姐姐）對於網友或是非求學生活圈的人，我都不敢說出我的實際年齡 只敢開玩笑帶過或謊報一個年齡，常常被問你是大學生嗎都覺得很心虛 本人實際年齡已經要27，雖然真的被猜中年齡也不會開心 因為ig偶爾會接觸到一些網美，大部分都比自己年輕漂亮 大家對於問年齡話題有什麼好的應對方式嗎?或是要怎麼釋懷被比較年齡 以及被叫老妹阿姨之類的狀況",
       "photoPath": "images/cry.jpg"
     },
-    "author": 8,
+    "name": "tom",
     "timestamp": "2024-03-31 09:30",
     "likes": {
       "thumbs": 18,
-      "crying-face": 4,
+      "cryingFace": 4,
       "heart": 32
     },
     "comments": [

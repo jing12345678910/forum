@@ -16,25 +16,28 @@ import {
   TrophyTwoTone,
   ContactsTwoTone,
 } from "@ant-design/icons";
+import { useTranslation } from "react-i18next";
 
 const FoTopicIcons = () => {
-  return {
-    DollarTwoTone: <DollarTwoTone />,
-    HeartTwoTone: <HeartTwoTone />,
-    CrownTwoTone: <CrownTwoTone />,
-    EditTwoTone: <EditTwoTone />,
-    BookTwoTone: <BookTwoTone />,
-    CustomerServiceTwoTone: <CustomerServiceTwoTone />,
-    VideoCameraTwoTone: <VideoCameraTwoTone />,
-    SmileTwoTone: <SmileTwoTone />,
-    StarTwoTone: <StarTwoTone />,
-    BugTwoTone: <BugTwoTone />,
-    RestTwoTone: <RestTwoTone />,
-    CarTwoTone: <CarTwoTone />,
-    SkinTwoTone: <SkinTwoTone />,
-    TrophyTwoTone: <TrophyTwoTone />,
-    ContactsTwoTone:<ContactsTwoTone/>
-  };
+  const { t } = useTranslation();
+
+  return [
+    { icon: <DollarTwoTone />, topicName: t("stock") },
+    { icon: <HeartTwoTone />, topicName: t("mood") },
+    { icon: <CrownTwoTone />, topicName: t("beauty") },
+    { icon: <EditTwoTone />, topicName: t("exam") },
+    { icon: <BookTwoTone />, topicName: t("animation") },
+    { icon: <CustomerServiceTwoTone />, topicName: t("music") },
+    { icon: <VideoCameraTwoTone />, topicName: t("drama") },
+    { icon: <SmileTwoTone />, topicName: t("variety") },
+    { icon: <StarTwoTone />, topicName: t("idol") },
+    { icon: <BugTwoTone />, topicName: t("pet") },
+    { icon: <RestTwoTone />, topicName: t("gourmet") },
+    { icon: <CarTwoTone />, topicName: t("travel") },
+    { icon: <SkinTwoTone />, topicName: t("outfit") },
+    { icon: <TrophyTwoTone />, topicName: t("sports") },
+    { icon: <ContactsTwoTone />, topicName: t("work") },
+  ];
 };
 
 export default FoTopicIcons;
