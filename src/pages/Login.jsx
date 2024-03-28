@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import {
-  MinusOutlined,
-  PlusOutlined,
-  UserOutlined,
-  LockOutlined,
-} from "@ant-design/icons";
-import {
-  QRCode,
   Button,
   Breadcrumb,
   Layout,
@@ -15,7 +9,6 @@ import {
   Checkbox,
   Form,
   Input,
-  Space,
   message,
 } from "antd";
 
@@ -56,10 +49,7 @@ const Login = () => {
 
   const [size, setSize] = useState(160);
   const onFinish = (values) => {
-    console.log("從表單接收的值: ", values);
     const { username, password } = values;
-    console.log("username:", username);
-    console.log("password:", password);
     if (username.trim() === "123" || password.trim() === "") {
       messageApi.error("帳號和密碼不能為空");
       // messageApi.error("This is an error message");
@@ -69,7 +59,6 @@ const Login = () => {
     }
   };
   const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
   };
   const increase = () => {
     setSize((prevSize) => {
@@ -124,35 +113,6 @@ const Login = () => {
               }}
               className="container"
             >
-              {/* <div className="qr_code">
-                <Button.Group
-                  style={{
-                    marginBottom: 16,
-                  }}
-                >
-                  <Button
-                    onClick={decline}
-                    disabled={size <= 48}
-                    icon={<MinusOutlined />}
-                  >
-                    Smaller
-                  </Button>
-                  <Button
-                    onClick={increase}
-                    disabled={size >= 300}
-                    icon={<PlusOutlined />}
-                  >
-                    Larger
-                  </Button>
-                </Button.Group>
-                <QRCode
-                  errorLevel="H"
-                  size={size}
-                  iconSize={size / 4}
-                  value="https://ant.design/"
-                  icon="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-                />
-              </div> */}
               <div className="main_picture">
                 <img
                   src={main_picture}

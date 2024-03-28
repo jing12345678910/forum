@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Layout, theme, Divider, Flex, Tag, Space, Button, Input } from "antd";
 import {
   SmileTwoTone,
@@ -48,10 +48,8 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
     const getPostData = async () => {
       try {
         const data = await homeApi.getPostData();
-        console.log(data);
         setPostData(data);
       } catch (error) {
-        console.error("獲取貼文資料錯誤", error);
       }
     };
     getPostData();
@@ -165,19 +163,19 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
                 >
                   <p style={{ marginLeft: "1rem" }}>隱藏留言</p>
                 </Button>
-                <div className="respond">
+                <div className="responds">
                   <SmileTwoTone />
                   <p>原PO</p>
                 </div>
-                <p style={{ marginLeft: "3rem" }}>更焦慮</p>
-                <div style={{ marginLeft: "1rem" }}>
+                <p style={{ marginLeft: "2rem" }}>更焦慮</p>
+                <div>
                   <p className="comment">
                     <span style={{ verticalAlign: "middle" }}>B1-1</span>
                     <span>2022 年 12 月 29 日 01:13</span>
                     <span>回覆</span>
                   </p>
                 </div>
-                <div className="respond">
+                <div className="responds">
                   <>
                     <SmileTwoTone />
                     <p>回覆人的名字</p>

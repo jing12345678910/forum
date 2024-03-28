@@ -1,4 +1,3 @@
-import React from "react";
 import {} from "@ant-design/icons";
 import { Layout } from "antd";
 import { useTranslation } from "react-i18next";

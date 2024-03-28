@@ -1,10 +1,6 @@
-import React from "react";
 import { FireFilled, FileTextFilled, BulbFilled } from "@ant-design/icons";
 import { Layout, Menu, Divider } from "antd";
-
-
 import FoTopicIcons from "./FoTopicIcons";
-
 import "../styles/App.css";
 import { useTranslation } from "react-i18next";
 
@@ -29,10 +25,8 @@ const FoSider = () => {
         breakpoint="lg"
         collapsedWidth="0"
         onBreakpoint={(broken) => {
-          console.log(broken);
         }}
         onCollapse={(collapsed, type) => {
-          console.log(collapsed, type);
         }}
       >
         <div className="demo-logo-vertical" />

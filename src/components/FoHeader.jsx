@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   Layout,
   theme,
@@ -47,7 +47,6 @@ const FoHeader = ({ isLoginPage, handleAddPost }) => {
     const addPost = (newData) => {
       //1.獲取數據
       const data = getPost();
-      console.log(data);
       //2.定義新增數據
       const post = {
         postID: Math.round(Math.random() * 100),
@@ -97,16 +96,13 @@ const FoHeader = ({ isLoginPage, handleAddPost }) => {
     setSearchValue(e.target.value);
     const keyword = e.target.value.trim();
     const filterPost = postData.filter((post) => post.title.includes(keyword));
-    console.log(filterPost);
   };
   useEffect(() => {
     const getPostData = async () => {
       try {
         const data = await homeApi.getPostData();
-        console.log(data);
         setPostData(data);
       } catch (error) {
-        console.error("獲取貼文資料錯誤", error);
       }
     };
     getPostData();

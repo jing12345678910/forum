@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, Fragment } from "react";
 import {
   SmileTwoTone,
   LikeTwoTone,
@@ -25,11 +25,8 @@ const FoArticleOverview = ({ data }) => {
     const getPostData = async () => {
       try {
         const data = await homeApi.getPostData();
-        console.log(data);
         setPostData(data);
-      } catch (error) {
-        console.error("獲取貼文資料錯誤", error);
-      }
+      } catch (error) {}
     };
     getPostData();
   }, []);
@@ -46,7 +43,7 @@ const FoArticleOverview = ({ data }) => {
       <>
         {data &&
           data.map((item, index) => (
-            <React.Fragment key={index}>
+            <Fragment key={index}>
               <p>
                 {t(item.topic)} . <SmileTwoTone />
                 {t(item.name)} . {item.timestamp}
@@ -84,7 +81,7 @@ const FoArticleOverview = ({ data }) => {
                 </Space>
               </div>
               <Divider />
-            </React.Fragment>
+            </Fragment>
           ))}
       </>
     </div>

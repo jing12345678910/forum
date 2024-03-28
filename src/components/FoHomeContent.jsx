@@ -1,10 +1,9 @@
-import React from "react";
 import { Layout, theme } from "antd";
 import "../styles/FoContent.css";
 import FoArticleOverview from "./FoArticleOverview";
 
 const { Content } = Layout;
-const FoHomeContent = ({postData}) => {
+const FoHomeContent = ({ postData }) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -26,7 +25,7 @@ const FoHomeContent = ({postData}) => {
             }}
           >
             <>
-              <FoArticleOverview data={postData}/>
+              <FoArticleOverview data={postData} />
             </>
           </div>
         </Content>

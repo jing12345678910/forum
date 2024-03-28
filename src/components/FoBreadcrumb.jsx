@@ -1,5 +1,3 @@
-import React from 'react'
-
 const FoBreadcrumb = () => {
   return (
     <FoBreadcrumb

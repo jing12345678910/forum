@@ -6,10 +6,9 @@ import Signup from "./pages/Signup";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Collection from "./pages/Collection";
+import AddPost from "./pages/AddPost";
 import "./styles/App.css"
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -21,6 +20,7 @@ const App = () => {
         <Route exact path="/profile" element={<Profile />} />
         <Route exact path="/editprofile" element={<EditProfile />} />
         <Route exact path="/collection" element={<Collection />} />
+        <Route exact path="/addpost" element={<AddPost />} />
       </Routes>
     </BrowserRouter>
   );
