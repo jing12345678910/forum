@@ -41,7 +41,7 @@ const items = [
   },
 ];
 
-const FoHeader = ({ isLoginPage, handleAddPost }) => {
+const FoHeader = ({ isLoginPage, handleAddPost,onSearch,searchValue }) => {
   
   
     const addPost = (newData) => {
@@ -75,7 +75,6 @@ const FoHeader = ({ isLoginPage, handleAddPost }) => {
     token: { colorBgContainer },
   } = theme.useToken();
   const [size] = useState("large"); // default is 'middle'
-  const [searchValue, setSearchValue] = useState("");
   const { t } = useTranslation();
   const [postData, setPostData] = useState(null);
   const appStore = useAppStore();
@@ -92,11 +91,7 @@ const FoHeader = ({ isLoginPage, handleAddPost }) => {
     setTheme(!isLightMode ? "light" : "dark"); // localStorage => 'dark'
     setBodyThemeClass(getTheme("theme")); // 'dark'
   };
-  const onSearch = (e) => {
-    setSearchValue(e.target.value);
-    const keyword = e.target.value.trim();
-    const filterPost = postData.filter((post) => post.title.includes(keyword));
-  };
+ 
   useEffect(() => {
     const getPostData = async () => {
       try {

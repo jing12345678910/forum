@@ -13,7 +13,7 @@ import { homeApi } from "../api/module/home";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
-const FoArticleOverview = ({ data }) => {
+const FoArticleOverview = ({ data, onDelete, onEdit, onCollect }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [postData, setPostData] = useState(null);
@@ -67,7 +67,9 @@ const FoArticleOverview = ({ data }) => {
                 </Space>
 
                 <Space className="button_collect">
-                  <HeartTwoTone twoToneColor="#eb2f96" />
+                  <Button onClick={() => onCollect(item.postID)}>
+                    <HeartTwoTone twoToneColor="#eb2f96" />
+                  </Button>
                   <p>{t("collect")}</p>
 
                   <Button
@@ -77,6 +79,12 @@ const FoArticleOverview = ({ data }) => {
                     style={{ marginLeft: "3rem" }}
                   >
                     {t("clickMe")}
+                  </Button>
+                  <Button onClick={() => onDelete(item.postID)}>
+                    {t("delete")}
+                  </Button>
+                  <Button onClick={() => onEdit(item.postID)}>
+                    {t("edit")}
                   </Button>
                 </Space>
               </div>
