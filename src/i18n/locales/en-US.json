@@ -11,6 +11,8 @@
   "rememberMe": "Remember me",
   "forgetPassword": "forget the password",
   "download": "Download App",
+  "topics": "Select a topic",
+  "topic": "Topic",
   "search topic": "Search for what topic",
   "follow": "Follow",
   "hot": "Hot board",
@@ -54,5 +56,14 @@
   "james": "James",
   "peter": "Peter",
   "footer line 1": "Join discussions on trendy topics exclusively for young people like you who are going to college or entering the workforce!",
-  "footer line 2": "Complete identity verification to post, comment, and draw cards to meet new friends"
+  "footer line 2": "Complete identity verification to post, comment, and draw cards to meet new friends",
+  "enter a title": "Please enter a title",
+  "title": "Title",
+  "describe": "Please describe your article in one sentence",
+  "overview":"Article overview",
+  "upload": "Upload",
+  "submit": "Submit",
+  "reset": "Reset",
+  "enter the content": "Please enter the content",
+  "content":"Content"
 }

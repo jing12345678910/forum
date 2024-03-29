@@ -3,7 +3,6 @@
     "postID": 1,
     "topic": "exam",
     "title": "我的考卷",
-
     "overview": "求各位大神幫助，我的考卷好難",
     "text": "請問有人可以幫忙解答這張考卷嗎？",
     "photoPath": "images/exam.jpg",
@@ -38,7 +37,7 @@
         "Reply-to-message": "我也是"
       }
     ],
-    "article-discussion-video": "https://www.youtube.com/watch?v=LQU6jK6FOYs&t=754s"
+    "articleDiscussionVideo": "https://www.youtube.com/watch?v=LQU6jK6FOYs&t=754s"
   },
   {
     "postID": 2,
@@ -71,7 +70,7 @@
         "Reply-to-message": "是的，很有魅力！"
       }
     ],
-    "article-discussion-video": "https://www.youtube.com/watch?v=RsIhZWQv4G0"
+    "articleDiscussionVideo": "https://www.youtube.com/watch?v=RsIhZWQv4G0"
   },
   {
     "postID": 3,
@@ -104,7 +103,7 @@
         "Reply-to-message": "謝謝！"
       }
     ],
-    "article-discussion-video": "https://www.youtube.com/watch?v=7u1l5UzGeeI"
+    "articleDiscussionVideo": "https://www.youtube.com/watch?v=7u1l5UzGeeI"
   },
   {
     "postID": 4,
@@ -137,7 +136,7 @@
         "Reply-to-message": "大家可以分享一下最喜歡的環節。"
       }
     ],
-    "article-discussion-video": "https://www.youtube.com/watch?v=z5OIjtZsgYo"
+    "articleDiscussionVideo": "https://www.youtube.com/watch?v=z5OIjtZsgYo"
   },
   {
     "postID": 5,
@@ -170,7 +169,7 @@
         "Reply-to-message": "對，運動對寵物健康很重要。"
       }
     ],
-    "article-discussion-video": "https://www.youtube.com/watch?v=Q0sCUhN3iKM"
+    "articleDiscussionVideo": "https://www.youtube.com/watch?v=Q0sCUhN3iKM"
   },
   {
     "postID": 6,
@@ -203,7 +202,7 @@
         "Reply-to-message": "我也覺得運動對改善心情很有幫助。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 7,
@@ -236,7 +235,7 @@
         "Reply-to-message": "對，每次去那裡都有種特別的感覺。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 8,
@@ -269,7 +268,7 @@
         "Reply-to-message": "流行音樂也是我平常喜歡聽的一種。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 9,
@@ -302,7 +301,7 @@
         "Reply-to-message": "是的，我也有許多美好的回憶與寵物小精靈相關。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 10,
@@ -335,7 +334,7 @@
         "Reply-to-message": "南極是一個神秘的地方，希望你能有機會去實現這個夢想。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 11,
@@ -368,7 +367,7 @@
         "Reply-to-message": "瑜伽確實是一種很好的運動，對身心健康都有益處。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 12,
@@ -401,7 +400,7 @@
         "Reply-to-message": "恭喜你完成了重要的項目，享受成功的喜悅吧！"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 13,
@@ -434,7 +433,7 @@
         "Reply-to-message": "悟空是一個非常優秀的角色，他的故事確實讓人感到振奮。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 14,
@@ -467,7 +466,7 @@
         "Reply-to-message": "狗狗的忠誠和活潑性格讓人感到溫暖，祝福你們和旺財有一個美好的時光。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 15,
@@ -500,7 +499,7 @@
         "Reply-to-message": "紐西蘭的自然景觀確實令人嘆為觀止，希望你能夠有機會實現這個美麗的夢想。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 16,
@@ -533,7 +532,7 @@
         "Reply-to-message": "Taylor Swift的音樂確實很受歡迎，她的歌曲常常能夠觸動人心。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 17,
@@ -566,7 +565,7 @@
         "Reply-to-message": "自製披薩確實可以根據個人口味進行調整，享受美食的樂趣。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 18,
@@ -599,7 +598,7 @@
         "Reply-to-message": "BTS的演唱會肯定會讓你度過一個難忘的夜晚，祝你玩得開心！"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 19,
@@ -632,7 +631,7 @@
         "Reply-to-message": "瑞士的自然風光確實令人讚嘆，希望你還能有更多機會去探索更多美麗的地方。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 20,
@@ -665,7 +664,7 @@
         "Reply-to-message": "街頭風格給人一種率性又不失品味的感覺，很有魅力！"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 21,
@@ -698,7 +697,7 @@
         "Reply-to-message": "足球確實是一項全球性的運動，讓人聚在一起共同感受比賽的激情。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 22,
@@ -731,7 +730,7 @@
         "Reply-to-message": "圖書館是一個很有氛圍的地方，閱讀書籍的同時也能享受到寧靜的時光。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 23,
@@ -764,7 +763,7 @@
         "Reply-to-message": "股票市場是一個充滿機遇和挑戰的地方，多學習多積累經驗，你會越來越進步的！"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 24,
@@ -797,7 +796,7 @@
         "Reply-to-message": "古裝劇的場景和服裝設計總是令人驚艷，有空也要來推薦一下哦！"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   },
   {
     "postID": 25,
@@ -823,6 +822,6 @@
         "Reply-to-message": "更焦慮。"
       }
     ],
-    "article-discussion-video": ""
+    "articleDiscussionVideo": ""
   }
 ]
