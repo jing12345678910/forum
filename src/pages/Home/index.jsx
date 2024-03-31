@@ -4,12 +4,19 @@ import { homeApi } from "@/api/module/home";
 import { getCollection, setCollection, setPost } from "@/utils/localStorage";
 import FoLayout from "@/components/FoLayout";
 import FoArticles from "@/components/FoArticles";
+import { useTranslation } from "react-i18next";
+import { message } from "antd";
 
 const Home = () => {
+  const { t } = useTranslation();
   const [member, setMember] = useState(null);
   const [postData, setPostData] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
+  const [filteredPostData, setFilteredPostData] = useState([]);
+  const [classifiedPostData, setClassifiedPostData] = useState([]);
+  const warning = () => {
+    message.warning(t("NoPostsFound"));
+  };
   useEffect(() => {
     const getMember = async () => {
       try {
@@ -20,10 +27,10 @@ const Home = () => {
     const getPost = async () => {
       //1.拿API資料
       try {
-        const data = await homeApi.getPostData();
+        const postData = await homeApi.getPostData();
         //2.存取狀態
-        setPostData(data); //改變畫面狀態
-        setPost(data);
+        setPostData(postData); //改變畫面狀態
+        setPost(postData);
       } catch (error) {}
     };
 
@@ -64,14 +71,23 @@ const Home = () => {
   };
 
   //搜尋
-  const SearchPost = (e) => {
-    //1. 先獲取關鍵字
-    const keyword = e.target.value;
-    setSearchValue(keyword);
-    //2. 貼文的title是不是有包含關鍵字
+  const SearchPost = (keyword) => {
+    //1. 貼文的title是不是有包含關鍵字;
     const filterPost = postData.filter((post) => post.title.includes(keyword));
-    //3.直接渲染畫面
-    setPostData(filterPost);
+    //2. 將過濾後的貼文儲存到filteredPostData狀態中，更新了狀態後，React自動重新渲染，不需要setPostData(filterPost)
+    setFilteredPostData(filterPost);
+  };
+
+  //依照主題過濾貼文
+  const PostsByTopic = (topic) => {
+    const classifiedPost = postData.filter((post) => post.topic === topic);
+    setClassifiedPostData(classifiedPost);
+    if (classifiedPost.length === 0) {
+      warning();
+    }
+  };
+  const onTopicSelect = (topic) => {
+    PostsByTopic(topic);
   };
 
   //收藏
@@ -93,9 +109,21 @@ const Home = () => {
   };
 
   return (
-    <FoLayout>
+    <FoLayout
+      SearchPost={SearchPost}
+      searchValue={searchValue}
+      setSearchValue={setSearchValue}
+      onTopicSelect={onTopicSelect}
+    >
       <FoArticles
-        data={postData}
+        //顯示過濾的貼文
+        data={
+          filteredPostData.length > 0
+            ? filteredPostData
+            : classifiedPostData.length > 0
+            ? classifiedPostData
+            : postData
+        }
         onDelete={deletePost}
         onEdit={editPost}
         onCollect={addToCollection}

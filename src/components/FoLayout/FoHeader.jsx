@@ -11,10 +11,16 @@ import {
   QRCode,
   Popover,
   Image,
+  Tooltip,
 } from "antd";
 import logo from "@/assets/images/srcImages/logo.jpg";
 import { Link, useNavigate } from "react-router-dom";
-import { GlobalOutlined, SunOutlined, MoonOutlined } from "@ant-design/icons";
+import {
+  GlobalOutlined,
+  SunOutlined,
+  MoonOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { useAppStore } from "@/store/AppStore"; // 1
 import { setPost, getPost, getTheme, setTheme } from "@/utils/localStorage";
@@ -39,7 +45,7 @@ const items = [
   },
 ];
 
-const FoHeader = ({ isLoginPage, onSearch, searchValue }) => {
+const FoHeader = ({ isLoginPage, SearchPost, searchValue, setSearchValue }) => {
   const addPost = (newData) => {
     //1.獲取數據
     const data = getPost();
@@ -112,17 +118,29 @@ const FoHeader = ({ isLoginPage, onSearch, searchValue }) => {
           <Link to="/">
             <Image src={logo} alt="logo" />
           </Link>
-          <Space direction="vertical">
+
+          <Space>
             <Input
               placeholder={t("search topic")}
               value={searchValue}
-              onChange={onSearch}
               size="large"
+              onChange={(e) => setSearchValue(e.target.value)}
             />
+            <Flex wrap="wrap" gap="small">
+              <Tooltip title="search">
+                <Button
+                  type="dashed"
+                  shape="circle"
+                  icon={<SearchOutlined />}
+                  onClick={() => SearchPost(searchValue)}
+                />
+              </Tooltip>
+            </Flex>
           </Space>
         </Flex>
+
         <Flex gap="small" wrap="wrap" align="center">
-          <Button size={size} onClick={addPost}>
+          <Button size={size} onClick={() => navigate("/addpost")}>
             {t("addNewPost")}
           </Button>
           {isLoginPage ? (

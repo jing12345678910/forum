@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import Collection from "./pages/Collection";
 import AddPost from "./pages/AddPost";
+import "@/assets/styles/App.css";
 
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
