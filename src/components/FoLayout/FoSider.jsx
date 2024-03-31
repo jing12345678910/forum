@@ -1,12 +1,9 @@
 import { FireFilled, FileTextFilled, BulbFilled } from "@ant-design/icons";
 import { Layout, Menu, Divider } from "antd";
-import FoTopicIcons from "./FoTopicIcons";
-import "../styles/App.css";
+import FoTopicIcons from "../FoTopicIcons";
 import { useTranslation } from "react-i18next";
 
 const { Sider } = Layout;
-
-
 
 const FoSider = () => {
   const { t } = useTranslation();
@@ -20,21 +17,17 @@ const FoSider = () => {
     label: topic.topicName,
   }));
   return (
-    <Layout>
-      <Sider
-        breakpoint="lg"
-        collapsedWidth="0"
-        onBreakpoint={(broken) => {
-        }}
-        onCollapse={(collapsed, type) => {
-        }}
-      >
-        <div className="demo-logo-vertical" />
-        <Menu theme="dark" mode="inline" items={customItems} />
-        <Divider />
-        <Menu theme="dark" mode="inline" items={categories} />
-      </Sider>
-    </Layout>
+    <Sider
+      breakpoint="lg"
+      collapsedWidth="0"
+      onBreakpoint={(broken) => {}}
+      onCollapse={(collapsed, type) => {}}
+    >
+      <div className="demo-logo-vertical" />
+      <Menu theme="dark" mode="inline" items={customItems} />
+      <Divider />
+      <Menu theme="dark" mode="inline" items={categories} />
+    </Sider>
   );
 };
 export default FoSider;

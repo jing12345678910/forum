@@ -1,20 +1,10 @@
-import "../mock/mockServer";
-import "../styles/Home.css";
+import "@/mock/mockServer";
 import { useState, useEffect } from "react";
-import { homeApi } from "../api/module/home";
-import { Layout } from "antd";
-import FoHeader from "../components/FoHeader";
-import FoSider from "../components/FoSider";
-import FoHomeContent from "../components/FoHomeContent";
-import FoFooter from "../components/FoFooter";
-import {
-  getCollection,
-  getPost,
-  setCollection,
-  setPost,
-} from "../utils/localStorage";
+import { homeApi } from "@/api/module/home";
+import { getCollection, setCollection, setPost } from "@/utils/localStorage";
+import FoLayout from "@/components/FoLayout";
+import FoArticles from "@/components/FoArticles";
 
-const { Sider } = Layout;
 const Home = () => {
   const [member, setMember] = useState(null);
   const [postData, setPostData] = useState([]);
@@ -103,25 +93,14 @@ const Home = () => {
   };
 
   return (
-    <Layout>
-      <Sider>
-        <FoSider />
-      </Sider>
-      <Layout className="main">
-        <FoHeader
-          handleAddPost={handleAddPost}
-          onSearch={SearchPost}
-          searchValue={searchValue}
-        />
-        <FoHomeContent
-          postData={postData}
-          onDelete={deletePost}
-          onEdit={editPost}
-          onCollect={addToCollection}
-        />
-        <FoFooter />
-      </Layout>
-    </Layout>
+    <FoLayout>
+      <FoArticles
+        data={postData}
+        onDelete={deletePost}
+        onEdit={editPost}
+        onCollect={addToCollection}
+      />
+    </FoLayout>
   );
 };
 export default Home;

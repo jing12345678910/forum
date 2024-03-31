@@ -8,12 +8,12 @@ import {
   PoweroffOutlined,
 } from "@ant-design/icons";
 import { theme, Space, Divider, Button } from "antd";
-import "../styles/FoContent.css";
-import { homeApi } from "../api/module/home";
+import { homeApi } from "@/api/module/home";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Flex } from "antd";
 
-const FoArticleOverview = ({ data, onDelete, onEdit, onCollect }) => {
+const FoArticles = ({ data, onDelete, onEdit, onCollect }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [postData, setPostData] = useState(null);
@@ -40,33 +40,34 @@ const FoArticleOverview = ({ data, onDelete, onEdit, onCollect }) => {
         borderRadius: borderRadiusLG,
       }}
     >
-      <>
-        {data &&
-          data.map((item, index) => (
-            <Fragment key={index}>
-              <p>
-                {t(item.topic)} . <SmileTwoTone />
-                {t(item.name)} . {item.timestamp}
-              </p>
-              <h2>{item.title}</h2>
-              <div className="article_summary">
-                <p>{item.overview}</p>
-                <img width={100} src={item.photoPath} alt="contentPhoto" />
-              </div>
-              <div className="respond">
-                <Space className="likes">
-                  <LikeTwoTone />
-                  <p>{item.likes && item.likes.thumbs}</p>
-                  <FrownTwoTone twoToneColor="#52c41a" />
-                  <p>{item.likes && item.likes.cryingFace}</p>
-                </Space>
+      {data &&
+        data.map((item, index) => (
+          <Fragment key={index}>
+            <p>
+              {t(item.topic)} . <SmileTwoTone />
+              {t(item.name)} . {item.timestamp}
+            </p>
+            <h2>{item.title}</h2>
+            <Flex justify="space-between">
+              <p>{item.overview}</p>
+              <img width={100} src={item.photoPath} alt="contentPhoto" />
+            </Flex>
+            <Flex>
+              <Space className="likes">
+                <LikeTwoTone />
+                <p>{item.likes && item.likes.thumbs}</p>
+                <FrownTwoTone twoToneColor="#52c41a" />
+                <p>{item.likes && item.likes.cryingFace}</p>
+              </Space>
 
-                <Space className="comment">
+              <Flex>
+                <Space>
                   <MessageOutlined />
                   <p>{item.comments && item.comments.length}</p>
                 </Space>
-
-                <Space className="button_collect">
+              </Flex>
+              <Flex>
+                <Space>
                   <Button onClick={() => onCollect(item.postID)}>
                     <HeartTwoTone twoToneColor="#eb2f96" />
                   </Button>
@@ -87,13 +88,13 @@ const FoArticleOverview = ({ data, onDelete, onEdit, onCollect }) => {
                     {t("edit")}
                   </Button>
                 </Space>
-              </div>
-              <Divider />
-            </Fragment>
-          ))}
-      </>
+              </Flex>
+            </Flex>
+            <Divider />
+          </Fragment>
+        ))}
     </div>
   );
 };
 
-export default FoArticleOverview;
+export default FoArticles;

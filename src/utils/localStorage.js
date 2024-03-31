@@ -2,10 +2,19 @@ export const setToken = (token) => {
   localStorage.setItem("My-TOKEN", JSON.stringify(token));
 };
 export const getToken = () => {
-  return JSON.parse(localStorage.getItem("My-TOKEN"));
+  return JSON.parse(localStorage.getItem("My-TOKEN")) || '';
 };
 export const removeToken = () => {
   localStorage.getItem("My-TOKEN");
+};
+export const setAccount = (account) => {
+  localStorage.setItem("My-Account", JSON.stringify(account));
+};
+export const getAccount = () => {
+  return JSON.parse(localStorage.getItem("My-Account"));
+};
+export const removeAccount = () => {
+  localStorage.getItem("My-Account");
 };
 
 export const setTheme = (theme) => {

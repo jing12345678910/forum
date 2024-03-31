@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import FoLayout from "../components/FoLayout";
+import FoLayout from "@/components/FoLayout";
 import {
   Button,
   Dropdown,
@@ -8,11 +8,10 @@ import {
   Upload,
   Checkbox,
   Form,
-  Space,
 } from "antd";
 import ImgCrop from "antd-img-crop";
 import { useTranslation } from "react-i18next";
-import { setPost } from "../utils/localStorage";
+import { setPost } from "@/utils/localStorage";
 const { TextArea } = Input;
 const normFile = (e) => {
   if (Array.isArray(e)) {
@@ -138,11 +137,9 @@ const AddPost = () => {
     const imgWindow = window.open(src);
     imgWindow?.document.write(image.outerHTML);
   };
-  //上傳圖片end
 
   return (
     <FoLayout>
-      <>
         <Checkbox
           checked={componentDisabled}
           onChange={(e) => setComponentDisabled(e.target.checked)}
@@ -166,19 +163,17 @@ const AddPost = () => {
         >
           {/* 主題選單 */}
           <Form.Item label={t("topic")}>
-            <>
-              <Dropdown
-                menu={{
-                  items,
-                }}
-                placement="bottomLeft"
-                arrow
-                // 當選擇某一個主題時，更新表單中的主題值
-                onSelect={(value) => setFormData({ ...formData, topic: value })}
-              >
-                <Button>{t("topics")}</Button>
-              </Dropdown>
-            </>
+            <Dropdown
+              menu={{
+                items,
+              }}
+              placement="bottomLeft"
+              arrow
+              // 當選擇某一個主題時，更新表單中的主題值
+              onSelect={(value) => setFormData({ ...formData, topic: value })}
+            >
+              <Button>{t("topics")}</Button>
+            </Dropdown>
           </Form.Item>
           {/* 輸入標題與概要 */}
           <Form.Item label={t("title")}>
@@ -252,19 +247,16 @@ const AddPost = () => {
               offset: 6,
             }}
           >
-            <Space>
-              <Button
-                type="primary"
-                htmlType="submit"
-                onClick={handleFormSubmit}
-              >
-                {t("submit")}
-              </Button>
-              <Button htmlType="reset"> {t("reset")}</Button>
-            </Space>
+            <Button
+              type="primary"
+              htmlType="submit"
+              onClick={handleFormSubmit}
+            >
+              {t("submit")}
+            </Button>
+            <Button htmlType="reset"> {t("reset")}</Button>
           </Form.Item>
         </Form>
-      </>
     </FoLayout>
   );
 };
