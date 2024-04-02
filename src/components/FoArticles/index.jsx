@@ -7,13 +7,20 @@ import {
   MessageOutlined,
   PoweroffOutlined,
 } from "@ant-design/icons";
-import { theme, Space, Divider, Button } from "antd";
+import { theme, Space, Divider, Button, message } from "antd";
 import { homeApi } from "@/api/module/home";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Flex } from "antd";
 
-const FoArticles = ({ data, onDelete, onEdit, onCollect }) => {
+const FoArticles = ({
+  data,
+  onDelete,
+  onEdit,
+  onCollect,
+  collect,
+  setcollect,
+}) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [postData, setPostData] = useState(null);
@@ -56,6 +63,7 @@ const FoArticles = ({ data, onDelete, onEdit, onCollect }) => {
               <Space className="likes">
                 <LikeTwoTone />
                 <p>{item.likes && item.likes.thumbs}</p>
+                {/* 用布林值的方式 如果是collect icon就換顏色 */}
                 <FrownTwoTone twoToneColor="#52c41a" />
                 <p>{item.likes && item.likes.cryingFace}</p>
               </Space>
@@ -69,7 +77,14 @@ const FoArticles = ({ data, onDelete, onEdit, onCollect }) => {
               <Flex>
                 <Space>
                   <Button onClick={() => onCollect(item.postID)}>
-                    <HeartTwoTone twoToneColor="#eb2f96" />
+                    <HeartTwoTone
+                      twoToneColor={
+                        collect &&
+                        collect.some((post) => post.postID === item.postID)
+                          ? "#eb2f96"
+                          : undefined
+                      }
+                    />
                   </Button>
                   <p>{t("collect")}</p>
 

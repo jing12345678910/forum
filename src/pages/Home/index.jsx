@@ -14,6 +14,7 @@ const Home = () => {
   const [searchValue, setSearchValue] = useState("");
   const [filteredPostData, setFilteredPostData] = useState([]);
   const [classifiedPostData, setClassifiedPostData] = useState([]);
+  const [collect, setCollect] = useState(getCollection());
   const warning = () => {
     message.warning(t("NoPostsFound"));
   };
@@ -101,10 +102,14 @@ const Home = () => {
     if (check) {
       // 新增到收藏的資料庫 ToDo:收藏成功
       setCollection([...collection, selectPost]);
+      //更新collect狀態
+      setCollect([...collection, selectPost]);
     } else {
       // 從收藏的資料庫刪除 ToDo:移除收藏成功
       const newCollection = collection.filter((post) => post.postID !== id);
       setCollection(newCollection);
+      //更新clollect狀態
+      setCollect(newCollection);
     }
   };
 
@@ -127,6 +132,8 @@ const Home = () => {
         onDelete={deletePost}
         onEdit={editPost}
         onCollect={addToCollection}
+        collect={collect}
+        setCollect={setCollect}
       />
     </FoLayout>
   );
