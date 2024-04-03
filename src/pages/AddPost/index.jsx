@@ -13,6 +13,7 @@ import ImgCrop from "antd-img-crop";
 import { useTranslation } from "react-i18next";
 import { setPost } from "@/utils/localStorage";
 const { TextArea } = Input;
+//處理上傳文件的統一格式
 const normFile = (e) => {
   if (Array.isArray(e)) {
     return e;
@@ -39,7 +40,9 @@ const AddPost = () => {
     comments: [],
     articleDiscussionVideo: "",
   });
-  //將表單所有值更新到FormData這個狀態變數中，以便後續操作使用
+
+  //處理整個表單的變化
+  //表單有任何變化 就更新所有資料 並且更新FormData的狀態
   const handleFormChange = (changedValues, allValues) => {
     setFormData(allValues);
   };
@@ -114,15 +117,17 @@ const AddPost = () => {
   //上傳圖片start
   const [fileList, setFileList] = useState([
     {
-      uid: "-1",
+      uid: "-1", //預設圖片的id 與實際上傳圖片的id 做出區別
       name: "image.png",
       status: "done",
       url: "images/avatar.jpg",
     },
   ]);
+  //處理文件上傳元件的變化
   const onChange = ({ fileList: newFileList }) => {
     setFileList(newFileList);
   };
+  //Antd套件 文件上傳預覽
   const onPreview = async (file) => {
     let src = file.url;
     if (!src) {
@@ -140,123 +145,117 @@ const AddPost = () => {
 
   return (
     <FoLayout>
-        <Checkbox
-          checked={componentDisabled}
-          onChange={(e) => setComponentDisabled(e.target.checked)}
-        >
-          ToDo:確認是會員才可以填表格，顯示會員名稱
-        </Checkbox>
-        <Form
-          labelCol={{
-            span: 4,
-          }}
-          wrapperCol={{
-            span: 14,
-          }}
-          layout="horizontal"
-          disabled={componentDisabled}
-          style={{
-            maxWidth: 600,
-          }}
-          //設置表單初始值為localStorage中保存的值
-          initialValues={formData}
-        >
-          {/* 主題選單 */}
-          <Form.Item label={t("topic")}>
-            <Dropdown
-              menu={{
-                items,
-              }}
-              placement="bottomLeft"
-              arrow
-              // 當選擇某一個主題時，更新表單中的主題值
-              onSelect={(value) => setFormData({ ...formData, topic: value })}
-            >
-              <Button>{t("topics")}</Button>
-            </Dropdown>
-          </Form.Item>
-          {/* 輸入標題與概要 */}
-          <Form.Item label={t("title")}>
-            <Flex vertical gap={12}>
-              {/* 將輸入框的值賦給title屬性 */}
-              <Input
-                placeholder={t("enter a title")}
-                value={formData.title}
-                onChange={(e) =>
-                  setFormData({ ...formData, title: e.target.value })
-                }
-              />
-            </Flex>
-          </Form.Item>
-          <Form.Item label={t("overview")}>
-            <Flex vertical gap={12}>
-              <Input
-                placeholder={t("describe")}
-                value={formData.overview}
-                onChange={(e) =>
-                  setFormData({ ...formData, overview: e.target.value })
-                }
-              />
-            </Flex>
-          </Form.Item>
-          {/* 內文輸入 */}
-          <Form.Item label={t("content")}>
-            <TextArea
-              rows={4}
-              placeholder={t("enter the content")}
-              value={formData.text}
+      <Checkbox
+        checked={componentDisabled}
+        onChange={(e) => setComponentDisabled(e.target.checked)}
+      >
+        ToDo:確認是會員才可以填表格，顯示會員名稱
+      </Checkbox>
+      <Form
+        labelCol={{
+          span: 4,
+        }}
+        wrapperCol={{
+          span: 14,
+        }}
+        layout="horizontal"
+        disabled={componentDisabled}
+        style={{
+          maxWidth: 600,
+        }}
+        //設置表單初始值為localStorage中保存的值
+        initialValues={formData}
+      >
+        {/* 主題選單 */}
+        <Form.Item label={t("topic")}>
+          <Dropdown
+            menu={{
+              items,
+            }}
+            placement="bottomLeft"
+            arrow
+            // 當選擇某一個主題時，更新表單中的主題值
+            onSelect={(value) => setFormData({ ...formData, topic: value })}
+          >
+            <Button>{t("topics")}</Button>
+          </Dropdown>
+        </Form.Item>
+        {/* 輸入標題與概要 */}
+        <Form.Item label={t("title")}>
+          <Flex vertical gap={12}>
+            {/* 將輸入框的值賦給title屬性 */}
+            <Input
+              placeholder={t("enter a title")}
+              value={formData.title}
               onChange={(e) =>
-                setFormData({ ...formData, text: e.target.value })
+                setFormData({ ...formData, title: e.target.value })
               }
             />
-          </Form.Item>
-          {/* 上傳圖片 */}
-          <Form.Item
-            label={t("upload")}
-            valuePropName="fileList"
-            getValueFromEvent={normFile}
-          >
-            <ImgCrop rotationSlider>
-              <Upload
-                action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
-                listType="picture-card"
-                fileList={fileList}
-                onChange={(info) => {
-                  // 獲取上傳的文件列表
-                  const { fileList, newFileList } = info;
-                  //更新文件列表到狀態變數
-                  setFileList(newFileList);
-                  //獲取文件列表中的圖片地址，儲存到photoPath字段鍾
-                  const photoPath = newFileList.map((file) => file.url);
-                  // 將圖片地址儲存到fromData中
-                  setFormData((prevFormData) => ({
-                    ...prevFormData,
-                    photoPath: photoPath,
-                  }));
-                }}
-                onPreview={onPreview}
-              >
-                {fileList.length < 5 && t("upload")}
-              </Upload>
-            </ImgCrop>
-          </Form.Item>
-          {/* 送出或重整 */}
-          <Form.Item
-            wrapperCol={{
-              span: 12,
-              offset: 6,
-            }}
-          >
-            <Button
-              type="primary"
-              htmlType="submit"
-              onClick={handleFormSubmit}
+          </Flex>
+        </Form.Item>
+        <Form.Item label={t("overview")}>
+          <Flex vertical gap={12}>
+            <Input
+              placeholder={t("describe")}
+              value={formData.overview}
+              onChange={(e) =>
+                setFormData({ ...formData, overview: e.target.value })
+              }
+            />
+          </Flex>
+        </Form.Item>
+        {/* 內文輸入 */}
+        <Form.Item label={t("content")}>
+          <TextArea
+            rows={4}
+            placeholder={t("enter the content")}
+            value={formData.text}
+            onChange={(e) => setFormData({ ...formData, text: e.target.value })}
+          />
+        </Form.Item>
+        {/* 上傳圖片 */}
+        <Form.Item
+          label={t("upload")}
+          valuePropName="fileList"
+          getValueFromEvent={normFile}
+        >
+          <ImgCrop rotationSlider>
+            <Upload
+              action="https://run.mocky.io/v3/435e224c-44fb-4773-9faf-380c5e6a2188"
+              listType="picture-card"
+              fileList={fileList}
+              onChange={(info) => {
+                //獲取上傳的文件列表
+                const { fileList, newFileList } = info;
+                //更新文件列表到狀態變數
+                setFileList(newFileList);
+                //獲取文件列表中的圖片地址，儲存到photoPath字段中
+                const photoPath = newFileList.map((file) => file.url);
+                // 將圖片地址儲存到fromData狀態中
+                setFormData((prevFormData) => ({
+                  ...prevFormData,
+                  photoPath: photoPath,
+                }));
+              }}
+              onPreview={onPreview}
             >
-              {t("submit")}
-            </Button>
-            <Button htmlType="reset"> {t("reset")}</Button>
-          </Form.Item>
-        </Form>
+              {fileList.length < 5 && t("upload")}
+            </Upload>
+          </ImgCrop>
+        </Form.Item>
+        {/* 送出或重整 */}
+        <Form.Item
+          wrapperCol={{
+            span: 12,
+            offset: 6,
+          }}
+        >
+          <Button type="primary" htmlType="submit" onClick={handleFormSubmit}>
+            {t("submit")}
+          </Button>
+          <Button htmlType="reset"> {t("reset")}</Button>
+        </Form.Item>
+      </Form>
     </FoLayout>
   );
 };

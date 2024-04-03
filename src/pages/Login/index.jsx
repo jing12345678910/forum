@@ -17,6 +17,8 @@ import {
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+
+  //定義myToken狀態 初始值為getToken()從local storage中獲取的 token
   const [myToken, setMyToken] = useState(getToken());
 
   const breadItems = [
@@ -35,12 +37,18 @@ const Login = () => {
     message.error("登入失敗", 1);
   };
 
+  //表單提交時執行
   const onFinish = async (values) => {
     try {
+      //從表單值中獲取帳號、密碼和是否記住登入狀態
       const { account, password, remember } = values;
+      //userApi.login() 方法向後端發送請求進行登入
       const { token } = await userApi.login({ account, password });
+      // 如果登入成功
       if (token) {
+        //將拿到的 token 存儲到 local storage 中
         setToken(token);
+        //myToken狀態改變
         setMyToken(token);
         success();
       }
@@ -58,6 +66,7 @@ const Login = () => {
     if (myToken) {
       navigate("/");
     }
+    //navigate雖然不會變化 但是加入到依賴項可以消除React警告
   }, [myToken, navigate]);
   return (
     <FoLayout>
@@ -102,7 +111,6 @@ const Login = () => {
               rules={[
                 {
                   required: true,
-                  // message: "Please input your Password!",
                   message: "請輸入密碼!",
                 },
               ]}

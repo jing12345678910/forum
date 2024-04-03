@@ -29,8 +29,9 @@ const Home = () => {
       //1.拿API資料
       try {
         const postData = await homeApi.getPostData();
-        //2.存取狀態
-        setPostData(postData); //改變畫面狀態
+        //2.存取狀態到postData(改變畫面狀態)
+        setPostData(postData);
+        //3. 將貼文資料儲存到本地儲存庫
         setPost(postData);
       } catch (error) {}
     };
@@ -39,7 +40,7 @@ const Home = () => {
     getPost();
   }, []);
   const handleAddPost = (newData) => {
-    //更新狀態  //4.響應式數據修改=>畫面重渲染
+    //存取狀態到postData(響應式數據修改=>畫面重渲染)
     setPostData([...postData, newData]);
   };
 
@@ -49,7 +50,7 @@ const Home = () => {
     const newPosts = postData.filter((post) => post.postID !== id);
     //2. 修改數據庫
     setPost(newPosts);
-    //3. 畫面渲染
+    //3. 存取狀態到postData(響應式數據修改=>畫面重渲染)
     setPostData(newPosts);
   };
 
@@ -67,7 +68,7 @@ const Home = () => {
     });
     //2. 修改數據庫
     setPost(newPosts);
-    //3. 畫面渲染
+    //3. 存取狀態到postData(響應式數據修改=>畫面重渲染)
     setPostData(newPosts);
   };
 
@@ -75,7 +76,7 @@ const Home = () => {
   const SearchPost = (keyword) => {
     //1. 貼文的title是不是有包含關鍵字;
     const filterPost = postData.filter((post) => post.title.includes(keyword));
-    //2. 將過濾後的貼文儲存到filteredPostData狀態中，更新了狀態後，React自動重新渲染，不需要setPostData(filterPost)
+    //2. 將過濾後的貼文儲存到filteredPostData狀態，更新狀態後，React自動重新渲染，不需要setPostData(filterPost)
     setFilteredPostData(filterPost);
   };
 

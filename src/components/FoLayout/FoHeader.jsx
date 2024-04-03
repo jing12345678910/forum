@@ -22,7 +22,7 @@ import {
   SearchOutlined,
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-import { useAppStore } from "@/store/AppStore"; // 1
+import { useAppStore } from "@/store/AppStore"; 
 import { setPost, getPost, getTheme, setTheme } from "@/utils/localStorage";
 import { homeApi } from "@/api/module/home";
 
@@ -47,7 +47,7 @@ const items = [
 
 const FoHeader = ({ isLoginPage, SearchPost, searchValue, setSearchValue }) => {
   const addPost = (newData) => {
-    //1.獲取數據
+    //1.獲取原數據
     const data = getPost();
     //2.定義新增數據
     const post = {
@@ -71,24 +71,33 @@ const FoHeader = ({ isLoginPage, SearchPost, searchValue, setSearchValue }) => {
     setPost(newPosts);
   };
   const navigate = useNavigate();
+
+  //解構 - 從theme.useToken()返回的結果中 提取 token 屬性，再從 token 屬性中提取 colorBgContainer 屬性，並將其賦值給一個名為colorBgContainer的變數。
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
   const [size] = useState("large"); // default is 'middle'
   const { t } = useTranslation();
   const [postData, setPostData] = useState(null);
   const appStore = useAppStore();
+
+  //用zustand管理全局的變更主題狀態
   const { isLightMode, setIsLightMode } = appStore;
 
+  //狀態改變 class改變
   const setBodyThemeClass = (theme) => {
     const body = document.body;
     body.className = "";
     body.classList.toggle(theme);
   };
+
   const toggleTheme = () => {
+    //切換 isLightMode 狀態的值
     setIsLightMode(!isLightMode);
+    //如果 isLightMode 的值為 true，即當前是明亮模式，則將主題設置為 "dark"，否則設置為 "light"
     setTheme(!isLightMode ? "light" : "dark"); // localStorage => 'dark'
-    setBodyThemeClass(getTheme("theme")); // 'dark'
+    setBodyThemeClass(getTheme("theme")); 
   };
 
   useEffect(() => {

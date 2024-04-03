@@ -7,7 +7,7 @@ import {
   FrownTwoTone,
   MessageOutlined,
 } from "@ant-design/icons";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 // import book from "../imgs/book.jpg";
 // import cry from "../imgs/cry.jpg";
 import { useTranslation } from "react-i18next";
@@ -17,10 +17,11 @@ import { homeApi } from "@/api/module/home";
 const { TextArea } = Input;
 
 const Post = () => {
-  const navigate = useNavigate();
   const params = useParams();
 
   const { id } = params;
+
+  //將colorBgContainer和borderRadiusLG兩個屬性的值從token - theme.useToken()返回的物件解構出來，分別賦值給colorBgContainer和borderRadiusLG兩個變數，以便後續在組件中使用。
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -48,17 +49,17 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
     };
     getPostData();
   }, [id]);
+  //當postData為null時，表示貼文數據尚未加載完成
   if (!postData) {
     return <div>Loading</div>;
   }
 
   const post = postData.find((item) => item.postID === parseInt(id));
+  //當postData已經加載完成，但根據提供的id找不到對應的貼文時，返回"Post not found"，表示未找到貼文。
   if (!post) {
     return <div>Post not found</div>;
   }
   const { title, topic, name, text } = post;
-
-  // navigate(`./post/${id}`);
 
   return (
     <FoLayout>
