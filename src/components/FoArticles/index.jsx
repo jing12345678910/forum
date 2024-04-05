@@ -23,21 +23,12 @@ const FoArticles = ({
 }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const [postData, setPostData] = useState(null);
+
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
-  useEffect(() => {
-    const getPostData = async () => {
-      try {
-        const data = await homeApi.getPostData();
-        setPostData(data);
-      } catch (error) {}
-    };
-    getPostData();
-  }, []);
-
+  
   return (
     <div
       style={{
