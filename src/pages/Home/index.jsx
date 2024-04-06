@@ -8,11 +8,10 @@ import { useTranslation } from "react-i18next";
 import { message } from "antd";
 
 const Home = () => {
-  const postsPerPage=10;
-   const [postData, setPostData] = useState([]);
-   const [page, setPage] = useState(1);
+  // const postsPerPage=10;
+  const [postData, setPostData] = useState([]);
+  const [page, setPage] = useState(1);
   const { t } = useTranslation();
-  const [member, setMember] = useState(null);
   const [searchValue, setSearchValue] = useState("");
   const [filteredPostData, setFilteredPostData] = useState([]);
   const [classifiedPostData, setClassifiedPostData] = useState([]);
@@ -22,68 +21,61 @@ const Home = () => {
   };
   //追蹤是否正在載入更多的狀態 避免觸發多次滾動事件 導致觸發多次API請求
   //初始值false 一開始不處於載入狀態
-  const [loading, setLoading] = useState(false);
+  // const [loading, setLoading] = useState(false);
 
-  const loadMoreData = async () => {
-    //loading狀態設為true 表示正在加載數據
-    setLoading(true);
-    try {
-      // 人工延遲 10 秒模擬 API 請求時間
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-      const moreData = await homeApi.getPostDataBy10();
-        //如果成功獲取新數據 添加到先前數據中
-        if(moreData && moreData.length>0){
-          setPostData((prevData) => [...prevData, ...moreData]);
-          setPage((prevPage)=>prevPage + 1);
-        }
-      }
-      //無論加載數據是否成功 都將loading狀態設為false 加載結束
-     catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false);
-      console.log("Loading finished.");
-    }
-  };
+  // const loadMoreData = async () => {
+  //loading狀態設為true 表示正在加載數據
+  // setLoading(true);
+  // try {
+  // 人工延遲 10 秒模擬 API 請求時間
+  // await new Promise((resolve) => setTimeout(resolve, 10000));
+  // const moreData = await homeApi.getPostData();
+  //   //如果成功獲取新數據 添加到先前數據中
+  //   if(moreData && moreData.length>0){
+  //     setPostData((prevData) => [...prevData, ...moreData]);
+  //     setPage((prevPage)=>prevPage + 1);
+  //   }
+  // }
+  //無論加載數據是否成功 都將loading狀態設為false 加載結束
+  //    catch (error) {
+  //     console.error("Error fetching data:", error);
+  //   } finally {
+  //     setLoading(false);
+  //     console.log("Loading finished.");
+  //   }
+  // };
   //監聽滾動事件
   //滾動頁面時會調用handleScroll函數
-  useEffect(() => {
-    //當滾動條的位置加上視窗的高度超過了整個文檔的高度 表示滾動到了頁面底部。
-    const handleScroll = () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      if (
-        scrollTop + windowHeight >= documentHeight &&
-        !loading
-      ) {
-        setPage(page + 1);
-        loadMoreData();
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    //當組件卸載 從滾動事件中移除handleScroll函數的監聽器 避免內存洩漏
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  // useEffect(() => {
+  //當滾動條的位置加上視窗的高度超過了整個文檔的高度 表示滾動到了頁面底部。
+  // const handleScroll = () => {
+  //   const scrollTop = document.documentElement.scrollTop;
+  //   const windowHeight = window.innerHeight;
+  //   const documentHeight = document.documentElement.scrollHeight;
+  //   if (
+  //     scrollTop + windowHeight >= documentHeight &&
+  //     !loading
+  //   ) {
+  //     setPage(page + 1);
+  //     loadMoreData();
+  //   }
+  // };
+  // window.addEventListener("scroll", handleScroll);
+  //當組件卸載 從滾動事件中移除handleScroll函數的監聽器 避免內存洩漏
+  //   return () => window.removeEventListener("scroll", handleScroll);
+  // }, []);
 
   useEffect(() => {
-    const getMember = async () => {
-      try {
-        const data = await homeApi.getMember();
-        setMember(data);
-      } catch (error) {}
-    };
     const getPost = async () => {
       //1.拿API資料
       try {
-        const data = await homeApi.getPostDataBy10();
+        const data = await homeApi.getPostData();
         //2.存取狀態到postData(改變畫面狀態)
-        setPostData(data.slice(1, 11));
+        setPostData(data);
         //3. 將貼文資料儲存到本地儲存庫
         setPost(data);
       } catch (error) {}
     };
-    getMember();
     getPost();
   }, []);
   const handleAddPost = (newData) => {
@@ -125,6 +117,24 @@ const Home = () => {
     const filterPost = postData.filter((post) => post.title.includes(keyword));
     //2. 將過濾後的貼文儲存到filteredPostData狀態，更新狀態後，React自動重新渲染，不需要setPostData(filterPost)
     setFilteredPostData(filterPost);
+  };
+
+  const morePosts = async () => {
+    try {
+      let newURL;
+      if (searchValue === "") {
+        newURL = `${homeApi}?page=${page}&per_page=10`;
+      }
+      //呼叫API獲取更多貼文資料
+      const moreData = await homeApi.getPostData();
+      //如果成功獲取新貼文 就增加到現有的貼文資料
+      if (moreData && moreData > 0) {
+        setPostData((prevData) => [...prevData, ...moreData]);
+        setPage((prevPage) => prevPage + 1);
+      }
+    } catch (error) {
+      console.error("Error fetching more posts:", error);
+    }
   };
 
   //依照主題過濾貼文
@@ -183,6 +193,9 @@ const Home = () => {
         collect={collect}
         setCollect={setCollect}
       />
+      <div className="morePosts">
+        <button onClick={morePosts}>更多貼文</button>
+      </div>
     </FoLayout>
   );
 };

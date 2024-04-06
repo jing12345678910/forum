@@ -8,11 +8,8 @@ import {
   MessageOutlined,
 } from "@ant-design/icons";
 import { useParams } from "react-router-dom";
-// import book from "../imgs/book.jpg";
-// import cry from "../imgs/cry.jpg";
 import { useTranslation } from "react-i18next";
 import FoLayout from "@/components/FoLayout";
-
 import { homeApi } from "@/api/module/home";
 const { TextArea } = Input;
 
@@ -53,13 +50,13 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
   if (!postData) {
     return <div>Loading</div>;
   }
-
   const post = postData.find((item) => item.postID === parseInt(id));
   //當postData已經加載完成，但根據提供的id找不到對應的貼文時，返回"Post not found"，表示未找到貼文。
   if (!post) {
     return <div>Post not found</div>;
   }
-  const { title, topic, name, text } = post;
+  const { title, topic, name, text, photoPath, likes, comments, timestamp } =
+    post;
 
   return (
     <FoLayout>
@@ -86,10 +83,10 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
           <div className="board">
             <SmileTwoTone />
             <p>{t(name)}</p>
-            <p>2022 年 12 月 29 日 00:35</p>
+            <p>{timestamp}</p>
           </div>
           <p>{text}</p>
-          {/* <img src={cry} width={150} alt="" /> */}
+          <img width={100} src={photoPath} alt="contentPhoto" />
           <>
             <Divider orientation="left"></Divider>
             <Flex justify="space-between">
@@ -101,74 +98,66 @@ const PostContent = ({ id, colorBgContainer, borderRadiusLG }) => {
               <Flex>
                 <div style={{ marginRight: 10 }}>
                   <LikeTwoTone />
-                  <span>542</span>
+                  <span>{likes.thumbs}</span>
                 </div>
                 <div style={{ marginRight: 10 }}>
                   <FrownTwoTone twoToneColor="#52c41a" />
-                  <span>197</span>
+                  <span>{likes.cryingFace}</span>
                 </div>
                 <div style={{ marginRight: 10 }}>
                   <MessageOutlined />
-                  <span>86</span>
+                  <span>{comments.length}</span>
                 </div>
                 <div>
                   <HeartTwoTone twoToneColor="#eb2f96" />
-                  <span>收藏</span>
+                  <span>{t("collect")}</span>
                 </div>
               </Flex>
             </Flex>
             <Divider orientation="left"></Divider>
-            <p>共 47 則留言</p>
+            <p>
+              {comments.length}
+              {t("NumberOfComments")}
+            </p>
             <Flex gap="4px 0" wrap="wrap">
               <Tag color="#456dc5">熱門</Tag>
               <Tag color="#cae6f2">由新至舊</Tag>
               <Tag color="#cae6f2">由舊至新</Tag>
             </Flex>
             <Divider />
-            <div className="board">
-              <SmileTwoTone />
-              <p>嘉南藥理大學</p>
-            </div>
-            <p className="comment">等你到30就不會了</p>
-            <p className="comment">
-              <span style={{ verticalAlign: "middle" }}>B1</span>
-              <span>2022 年 12 月 29 日 01:13</span>
-              <span>回覆</span>
-            </p>
-            <Button
-              type="link"
-              block
-              style={{ textAlign: "start", color: "GrayText" }}
-            >
-              <p style={{ marginLeft: "1rem" }}>隱藏留言</p>
-            </Button>
-            <div className="responds">
-              <SmileTwoTone />
-              <p>原PO</p>
-            </div>
-            <p style={{ marginLeft: "2rem" }}>更焦慮</p>
-            <div>
-              <p className="comment">
-                <span style={{ verticalAlign: "middle" }}>B1-1</span>
-                <span>2022 年 12 月 29 日 01:13</span>
-                <span>回覆</span>
-              </p>
-            </div>
-            <div className="responds">
-              <SmileTwoTone />
-              <p>回覆人的名字</p>
-            </div>
-            <div style={{ marginLeft: "3rem" }}>
-              <div style={{ margin: "24px 0" }} />
-              <TextArea
-                value={value}
-                onChange={(e) => setValue(e.target.value)}
-                placeholder="回覆..."
-                autoSize={{ minRows: 3, maxRows: 5 }}
-              />
-            </div>
+
+            {comments.map((comment, index) => (
+              <div key={index}>
+                <p className="comment">
+                  <span style={{ verticalAlign: "middle" }}>
+                    B{comment.order}
+                  </span>
+                  <span>{timestamp}</span>
+                  <span>{t("response")}</span>
+                </p>
+                <p>{comment.university}</p>
+                <div className="board"> </div>
+                <p className="comment">{comment.content}</p>
+                <Button
+                  type="link"
+                  block
+                  style={{ textAlign: "start", color: "GrayText" }}
+                >
+                  <p>{t("HideComments")}</p>
+                </Button>
+                <div>
+                  <div />
+                  <TextArea
+                    value={value}
+                    onChange={(e) => setValue(e.target.value)}
+                    placeholder={t("response")}
+                    autoSize={{ minRows: 3, maxRows: 5 }}
+                  />
+                </div>
+                <Divider />
+              </div>
+            ))}
           </>
-          <Divider />
         </div>
       </Flex>
     </FoLayout>

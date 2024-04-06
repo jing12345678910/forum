@@ -66,5 +66,8 @@
   "reset": "重置",
   "enter the content": "請輸入內容",
   "content": "內容",
-  "NoPostsFound": "沒有找到文章！"
+  "NoPostsFound": "沒有找到文章！",
+  "NumberOfComments":"則留言",
+  "response":"回覆",
+  "HideComments":"隱藏留言"
 }

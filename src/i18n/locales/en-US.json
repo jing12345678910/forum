@@ -60,11 +60,14 @@
   "enter a title": "Please enter a title",
   "title": "Title",
   "describe": "Please describe your article in one sentence",
-  "overview":"Article overview",
+  "overview": "Article overview",
   "upload": "Upload",
   "submit": "Submit",
   "reset": "Reset",
   "enter the content": "Please enter the content",
-  "content":"Content",
-  "NoPostsFound":"No Posts Found!"
+  "content": "Content",
+  "NoPostsFound": "No Posts Found!",
+  "NumberOfComments": "Comments",
+  "response": "Response",
+  "HideComments": "Hide Comments"
 }
