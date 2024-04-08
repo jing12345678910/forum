@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import FoLayout from "@/components/FoLayout";
 import {
   Button,
-  Dropdown,
   Flex,
   Input,
   Upload,
   Checkbox,
   Form,
+  Select,
+  Space,
 } from "antd";
 import ImgCrop from "antd-img-crop";
 import { useTranslation } from "react-i18next";
@@ -51,68 +52,76 @@ const AddPost = () => {
     setPost(formData);
   };
   //主題項目
-  const items = [
+  const options = [
     {
-      key: "1",
+      value: "1",
       label: t("stock"),
     },
     {
-      key: "2",
+      value: "2",
       label: t("mood"),
     },
     {
-      key: "3",
+      value: "3",
       label: t("beauty"),
     },
     {
-      key: "4",
+      value: "4",
       label: t("exam"),
     },
     {
-      key: "5",
+      value: "5",
       label: t("animation"),
     },
     {
-      key: "6",
+      value: "6",
       label: t("music"),
     },
     {
-      key: "7",
+      value: "7",
       label: t("drama"),
     },
     {
-      key: "8",
+      value: "8",
       label: t("variety"),
     },
     {
-      key: "9",
+      value: "9",
       label: t("idol"),
     },
     {
-      key: "10",
+      value: "10",
       label: t("pet"),
     },
     {
-      key: "11",
+      value: "11",
       label: t("gourmet"),
     },
     {
-      key: "12",
+      value: "12",
       label: t("travel"),
     },
     {
-      key: "13",
+      value: "13",
       label: t("outfit"),
     },
     {
-      key: "14",
+      value: "14",
       label: t("sports"),
     },
     {
-      key: "15",
+      value: "15",
       label: t("work"),
     },
   ];
+  const handleChange = (value) => {
+    console.log(`Selected: ${value}`);
+    //把選中的主題存到formData
+    setFormData((prevFormData)=>({
+      ...prevFormData
+      ,topic:value,
+    }))
+  };
 
   //上傳圖片start
   const [fileList, setFileList] = useState([
@@ -168,17 +177,21 @@ const AddPost = () => {
       >
         {/* 主題選單 */}
         <Form.Item label={t("topic")}>
-          <Dropdown
-            menu={{
-              items,
+          <Space
+            direction="vertical"
+            style={{
+              width: "100%",
             }}
-            placement="bottomLeft"
-            arrow
-            // 當選擇某一個主題時，更新表單中的主題值
-            onSelect={(value) => setFormData({ ...formData, topic: value })}
           >
-            <Button>{t("topics")}</Button>
-          </Dropdown>
+            <Select
+              defaultValue={t("topics")}
+              onChange={handleChange}
+              style={{
+                width: "100%",
+              }}
+              options={options}
+            />
+          </Space>
         </Form.Item>
         {/* 輸入標題與概要 */}
         <Form.Item label={t("title")}>
