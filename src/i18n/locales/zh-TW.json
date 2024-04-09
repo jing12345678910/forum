@@ -34,6 +34,9 @@
   "sports": "體育板",
   "work": "打工板",
   "collect": "收藏",
+  "collection": "我的收藏",
+  "Following Topics": "我追蹤的主題",
+  "myArticle":"我的文章",
   "clickMe": "點我",
   "anna": "安娜",
   "ming": "小明",
@@ -67,7 +70,7 @@
   "enter the content": "請輸入內容",
   "content": "內容",
   "NoPostsFound": "沒有找到文章！",
-  "NumberOfComments":"則留言",
-  "response":"回覆",
-  "HideComments":"隱藏留言"
+  "NumberOfComments": "則留言",
+  "response": "回覆",
+  "HideComments": "隱藏留言"
 }

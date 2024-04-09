@@ -1,13 +1,22 @@
 import server from "../server";
 
 export const homeApi = {
-  getMember: async () => {
+  getMember: async (token) => {
     try {
-      const { data } = await server.get("/member");
-      return data;
+      const response = await server.get("/member", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      if (response && response.data) {
+        return response.data;
+      } else {
+        console.error(
+          "Error fetching member data: Response or data is undefined"
+        );
+        return null;
+      }
     } catch (error) {
       console.error("Error fetching member data:", error);
-      return [];
+      return null;
     }
   },
 
@@ -17,7 +26,7 @@ export const homeApi = {
       const { data } = await server.get(url);
       return data;
     } catch (error) {
-      console.error("Error fetching post data:", error);
+      console.error("Error fetching Post data:", error.message);
       return [];
     }
   },
@@ -35,7 +44,7 @@ export const homeApi = {
         return [];
       }
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error fetching Post data:", error.message);
       return [];
     }
   },

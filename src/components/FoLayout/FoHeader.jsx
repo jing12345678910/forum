@@ -20,6 +20,7 @@ import {
   SunOutlined,
   MoonOutlined,
   SearchOutlined,
+  UserOutlined
 } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import { useAppStore } from "@/store/AppStore"; 
@@ -178,6 +179,9 @@ const FoHeader = ({ isLoginPage, SearchPost, searchValue, setSearchValue }) => {
           </Dropdown>
           <Button type="primary" size={size} onClick={toggleTheme}>
             {isLightMode ? <SunOutlined /> : <MoonOutlined />}
+          </Button>
+          <Button size={size} onClick={() => navigate("/profile")}>
+            <UserOutlined />
           </Button>
         </Flex>
       </Flex>

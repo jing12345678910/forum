@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { homeApi } from "@/api/module/home";
 import { useNavigate } from "react-router-dom";
 import { UserOutlined, LockOutlined } from "@ant-design/icons";
 import { Button, Flex, Checkbox, Form, Input, message } from "antd";
@@ -17,6 +18,8 @@ import {
 const Login = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [member, setMember] = useState(null);
 
   //定義myToken狀態 初始值為getToken()從local storage中獲取的 token
   const [myToken, setMyToken] = useState(getToken());
@@ -39,35 +42,64 @@ const Login = () => {
 
   //表單提交時執行
   const onFinish = async (values) => {
+    setLoading(true);
     try {
       //從表單值中獲取帳號、密碼和是否記住登入狀態
       const { account, password, remember } = values;
       //userApi.login() 方法向後端發送請求進行登入
       const { token } = await userApi.login({ account, password });
-      // 如果登入成功
-      if (token) {
+      // 檢查獲取的 token 是否有效
+      if (token && token !== "") {
         //將拿到的 token 存儲到 local storage 中
         setToken(token);
         //myToken狀態改變
         setMyToken(token);
         success();
-      }
-      if (remember) {
-        setAccount(account);
+        if (remember) {
+          setAccount(account);
+        } else {
+          removeAccount(account);
+        }
+        //登入成功後跳轉到首頁
+        navigate("/");
       } else {
-        removeAccount(account);
+        // // 登入失敗，清除 token
+        // setToken(null);
+        // //myToken狀態改變
+        // setMyToken(null);
+        error();
       }
     } catch (err) {
       console.error(err);
       error();
+    } finally {
+      setLoading(false);
     }
   };
   useEffect(() => {
-    if (myToken) {
-      navigate("/");
-    }
-    //navigate雖然不會變化 但是加入到依賴項可以消除React警告
-  }, [myToken, navigate]);
+    const getMember = async () => {
+      try {
+        const data = await homeApi.getMember();
+        // 確保 data 存在
+        if (data) {
+          console.log(data);
+          setMember(data);
+        }else{
+          console.error("獲取會員資料錯誤：無效的數據結構", data);
+        }
+      } catch (error) {
+        console.error("獲取會員資料錯誤", error);
+      }
+    };
+    getMember();
+  }, []);
+
+  // useEffect(() => {
+  //   if (myToken) {
+  //     navigate("/");
+  //   }
+  //   //navigate雖然不會變化 但是加入到依賴項可以消除React警告
+  // }, [myToken, navigate]);
   return (
     <FoLayout>
       <FoBreadcrumb items={breadItems} />
@@ -126,8 +158,10 @@ const Login = () => {
               valuePropName="checked"
               style={{ textAlign: "center" }}
             >
-              <Checkbox>{t("rememberMe")}</Checkbox>
-              <a href="#">{t("forgetPassword")}</a>
+              <div>
+                <Checkbox>{t("rememberMe")}</Checkbox>
+                <a href="#">{t("forgetPassword")}</a>
+              </div>
             </Form.Item>
             <Form.Item style={{ textAlign: "center" }}>
               <Button
