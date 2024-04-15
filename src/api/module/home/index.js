@@ -19,7 +19,10 @@ export const homeApi = {
       return null;
     }
   },
-
+  getPostData: async () => {
+    const { data } = await server.get('/postData');
+    return data;
+  },
   getPostDataByPage: async (page, perPage) => {
     try {
       const url = `/post?page=${page}&per_page=${perPage}`;
@@ -31,13 +34,11 @@ export const homeApi = {
     }
   },
 
-  getPostDataBy10: async (page, perPage) => {
+  getPostDataBy10: async (page, perPage = 10) => {
     try {
       const url = `/post?page=${page}&per_page=${perPage}`;
       const response = await server.get(url);
       if (response && response.data) {
-        console.log("Page:", page);
-        console.log("PerPage:", perPage);
         return response.data;
       } else {
         console.error("Error: No data received");

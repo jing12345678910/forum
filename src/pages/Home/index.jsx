@@ -1,123 +1,51 @@
 import "@/mock/mockServer";
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
-import axios from "axios";
-import { homeApi } from "@/api/module/home";
-import { getCollection, setCollection, setPost } from "@/utils/localStorage";
+import { getCollection, setCollection, setPost, getPost } from "@/utils/localStorage";
 import FoLayout from "@/components/FoLayout";
 import FoArticles from "@/components/FoArticles";
 import { useTranslation } from "react-i18next";
 import { message } from "antd";
+import { useAppStore } from "../../store/AppStore";
+import { Pagination } from "antd";
 
 const Home = () => {
-  const [postData, setPostData] = useState([]);
-  const location = useLocation(); // 獲取當前路徑
-  const [page, setPage] = useState(1);
-  const perPage = 10;
+  const perPage = 10
+  const { setPosts, posts } = useAppStore()
   const { t } = useTranslation();
+  const [postData, setPostData] = useState(getPost());
   const [searchValue, setSearchValue] = useState(""); // 搜尋關鍵字
   const [filteredPostData, setFilteredPostData] = useState([]);
   const [classifiedPostData, setClassifiedPostData] = useState([]);
   const [collect, setCollect] = useState(getCollection());
+  const [pageSize, setPageSize] = useState(getPost().length);
   const [loading, setLoading] = useState(false); // 加載更多資料狀態
   const warning = () => {
     message.warning(t("NoPostsFound"));
   };
-
-  // 加載更多貼文
-  const loadMoreData = async () => {
-    setLoading(true); // 設置載入中狀態為true
-    try {
-      // 模擬 API 請求延遲 10 秒
-      await new Promise((resolve) => setTimeout(resolve, 10000));
-      // 獲取更多貼文
-      const moreData = await homeApi.getPostDataBy10(page + 1, perPage);
-      if (moreData && moreData.length > 0) {
-        // 將獲取的資料加到先前資料中
-        setPostData((prevData) => [...prevData, ...moreData]);
-        // 更新頁碼
-        setPage((prevPage) => prevPage + 1);
-      }
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    } finally {
-      setLoading(false); // 結束載入，設置為false
+  const fetchData = (page) => {
+    setLoading(true);
+    const data = filteredPostData.length ? filteredPostData : getPost();
+    if (data.length) {
+      // 根據頁碼和每頁數量計算貼文的起始和結束索引
+      const start = (page - 1) * perPage;
+      const end = start + perPage;
+      // 從貼文資料中獲取指定範圍的貼文資料
+      const posts = data.slice(start, end);
+      setPageSize(posts.length)
+      setPostData(posts)
     }
+    setLoading(false);
   };
-
-  // 初始化時獲取第一頁資料
-  useEffect(() => {
-    const getInitialData = async () => {
-      try {
-        const data = await homeApi.getPostDataByPage(1, perPage);
-        setPostData(data);
-      } catch (error) {
-        console.error("Error fetching initial data:", error);
-      }
-    };
-    getInitialData();
-  }, []);
-
-  // 監聽滾動事件
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = document.documentElement.scrollTop;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      if (scrollTop + windowHeight >= documentHeight && !loading) {
-        setPage((prevPage) => prevPage + 1);
-        loadMoreData();
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [loading, page]);
-
-  // 獲取貼文資料並存儲到本地
-  useEffect(() => {
-    const getPost = async () => {
-      try {
-        const data = await homeApi.getPostDataBy10(1, perPage);
-        setPostData(data);
-        setPost(data);
-      } catch (error) {}
-    };
-    getPost();
-  }, []);
+  const handlePaginationChange = (page) => {
+    fetchData(page)
+  }
 
   // 根據頁碼和每頁顯示數量獲取貼文資料
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await homeApi.getPostDataBy10(page, perPage);
-        setPostData(data);
-        setPost(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [page]);
-
-  // 根據 URL 查詢參數決定是否獲取第一頁資料
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const params = new URLSearchParams(location.search);
-        const page1 = params.get("page") === "page1";
-        const data = await homeApi.getPostDataBy10(page1 ? 1 : page, perPage);
-        setPostData(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    fetchData();
-  }, [location.search, page, perPage]);
-
-  // 新增貼文
-  const handleAddPost = (newData) => {
-    setPostData([...postData, newData]);
-  };
+    if (!postData.length) {
+      setPosts()
+    }
+  }, []);
 
   // 刪除貼文
   const deletePost = (id) => {
@@ -143,20 +71,13 @@ const Home = () => {
   const SearchPost = (keyword) => {
     const filterPost = postData.filter((post) => post.title.includes(keyword));
     setFilteredPostData(filterPost);
+    if (!filterPost.length) {
+      setPageSize(getPost().length);
+      return;
+    }
+    setPageSize(filterPost.length);
   };
 
-  // 加載更多貼文
-  const morePosts = async () => {
-    try {
-      const data = await homeApi.getPostDataBy10(page + 1, perPage);
-      if (data && data.length > 0) {
-        setPostData((prevData) => [...prevData, ...data]);
-        setPage((prevPage) => prevPage + 1);
-      }
-    } catch (error) {
-      console.error("Error fetching more posts:", error);
-    }
-  };
 
   // 依照主題過濾貼文
   const PostsByTopic = (topic) => {
@@ -184,7 +105,6 @@ const Home = () => {
       setCollect(newCollection);
     }
   };
-
   return (
     <FoLayout
       SearchPost={SearchPost}
@@ -206,9 +126,12 @@ const Home = () => {
         collect={collect}
         setCollect={setCollect}
       />
-      <div className="morePosts">
-        <button onClick={morePosts}>更多貼文</button>
-      </div>
+      <Pagination
+        defaultCurrent={1}
+        pageSize={10}
+        onChange={handlePaginationChange}
+        total={pageSize}
+      />
     </FoLayout>
   );
 };

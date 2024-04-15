@@ -36,7 +36,7 @@ export const setPost = (data) => {
 };
 //從本地儲存庫讀取貼文資料
 export const getPost = () => {
-  return JSON.parse(localStorage.getItem("posts"));
+  return JSON.parse(localStorage.getItem("posts")) || [];
 };
 //從本地儲存庫移除貼文資料;
 export const removePost = () => {
